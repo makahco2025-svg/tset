@@ -149,6 +149,27 @@
             margin: 8px auto 0;
         }
 
+        /* Visitor Counter Styles */
+        .visitor-counter {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary-color);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 1000;
+            font-weight: bold;
+        }
+        
+        .visitor-counter i {
+            font-size: 1.2em;
+        }
+
         /* Carousel Styles for Offers */
         .carousel-container {
             position: relative;
@@ -827,6 +848,12 @@
                 width: 100%;
                 right: -100%;
             }
+            
+            .visitor-counter {
+                bottom: 90px; /* Adjust position to not overlap with cart icon */
+                right: 20px;
+                font-size: 0.9em;
+            }
         }
     </style>
 <script type="importmap">
@@ -983,8 +1010,36 @@
         <button id="closeSuccessMessage">حسناً</button>
     </div>
 
+    <!-- Visitor Counter -->
+    <div class="visitor-counter" id="visitorCounter">
+        <i class="fas fa-users"></i>
+        <span id="visitorCount">0</span> زائر
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Visitor Counter Logic
+            const visitorCounter = document.getElementById('visitorCounter');
+            const visitorCount = document.getElementById('visitorCount');
+            
+            // Check if this is a new visitor
+            const hasVisitedBefore = localStorage.getItem('hasVisitedBefore');
+            let totalVisitors = parseInt(localStorage.getItem('totalVisitors') || '0');
+            
+            // If this is a new visitor, increment the counter
+            if (!hasVisitedBefore) {
+                totalVisitors++;
+                localStorage.setItem('totalVisitors', totalVisitors.toString());
+                localStorage.setItem('hasVisitedBefore', 'true');
+            }
+            
+            // Update the visitor count display
+            visitorCount.textContent = totalVisitors;
+            
+            // Optional: If you want to track unique visitors across sessions, 
+            // you could use a combination of localStorage and sessionStorage
+            // or implement a server-side solution for more accurate tracking
+
             // Carousel Logic
             const offerProducts = [
                 {name: "طبق بيض ابيض", oldPrice: "170.00 جنيه", newPrice: "159.00 جنيه", discount: "-25%", image: "https://cdn.metro-cc.ru/ru/ru_pim_195676001001_01.png"},
@@ -1212,296 +1267,217 @@
                 cartCount.textContent = itemCount;
                 cartTotal.textContent = total.toFixed(2) + ' جنيه';
                 
-                // Save cart to localStorage
-                localStorage.setItem('cart', JSON.stringify(cart));
-            }
-
-            // Add product to cart
-            function addToCart(product) {
-                const existingItemIndex = cart.findIndex(item => item.name === product.name);
-                
-                if (existingItemIndex !== -1) {
-                    cart[existingItemIndex].quantity += 1;
-                } else {
-                    cart.push({
-                        ...product,
-                        quantity: 1
+                // Add event listeners to quantity buttons
+                document.querySelectorAll('.quantity-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const index = parseInt(this.dataset.index);
+                        const action = this.dataset.action;
+                        
+                        if (action === 'increase') {
+                            cart[index].quantity++;
+                        } else if (action === 'decrease') {
+                            cart[index].quantity--;
+                            if (cart[index].quantity <= 0) {
+                                cart.splice(index, 1);
+                            }
+                        }
+                        
+                        localStorage.setItem('cart', JSON.stringify(cart));
+                        updateCartDisplay();
                     });
-                }
-                
-                updateCartDisplay();
+                });
             }
-
-            // Update product quantity in cart
-            function updateQuantity(index, action) {
-                if (action === 'increase') {
-                    cart[index].quantity += 1;
-                } else if (action === 'decrease') {
-                    cart[index].quantity -= 1;
-                    if (cart[index].quantity <= 0) {
-                        cart.splice(index, 1);
-                    }
-                }
-                
-                updateCartDisplay();
-            }
-
-            // Open/close cart
+            
+            // Cart event listeners
             cartIcon.addEventListener('click', () => {
                 cartSidebar.classList.add('active');
             });
-
+            
             closeCart.addEventListener('click', () => {
                 cartSidebar.classList.remove('active');
             });
-
-            // Quantity controls
-            cartItems.addEventListener('click', (e) => {
-                if (e.target.classList.contains('quantity-btn')) {
-                    const index = parseInt(e.target.dataset.index);
-                    const action = e.target.dataset.action;
-                    updateQuantity(index, action);
-                }
-            });
-
-            // Open checkout modal
+            
             checkoutBtn.addEventListener('click', () => {
                 if (cart.length === 0) {
                     alert('عربة التسوق فارغة!');
                     return;
                 }
                 checkoutModal.classList.add('active');
-                // Try to get location automatically when opening checkout
-                if (!userLocation) {
-                    getUserLocation();
-                }
             });
-
+            
             closeCheckoutModal.addEventListener('click', () => {
                 checkoutModal.classList.remove('active');
             });
-
-            // Get user location with high accuracy (5 meters)
-            function getUserLocation() {
-                locationStatus.textContent = 'جاري تحديد موقعك...';
-                locationStatus.className = 'location-status';
-                
-                if (!navigator.geolocation) {
-                    locationStatus.textContent = 'المتصفح الخاص بك لا يدعم تحديد الموقع الجغرافي';
-                    locationStatus.className = 'location-status error';
-                    return;
-                }
-                
-                navigator.geolocation.getCurrentPosition(
-                    (position) => {
-                        userLocation = {
-                            latitude: position.coords.latitude,
-                            longitude: position.coords.longitude,
-                            accuracy: position.coords.accuracy
-                        };
-                        
-                        locationInput.value = `https://www.google.com/maps?q=${userLocation.latitude},${userLocation.longitude}`;
-                        locationStatus.textContent = `تم تحديد موقعك بدقة ${Math.round(userLocation.accuracy)} متر`;
-                        locationStatus.className = 'location-status success';
-                    },
-                    (error) => {
-                        let errorMessage = 'حدث خطأ أثناء تحديد موقعك: ';
-                        
-                        switch(error.code) {
-                            case error.PERMISSION_DENIED:
-                                errorMessage += 'تم رفض طلب تحديد الموقع';
-                                break;
-                            case error.POSITION_UNAVAILABLE:
-                                errorMessage += 'معلومات الموقع غير متاحة';
-                                break;
-                            case error.TIMEOUT:
-                                errorMessage += 'انتهت مهلة طلب الموقع';
-                                break;
-                            case error.UNKNOWN_ERROR:
-                                errorMessage += 'خطأ غير معروف';
-                                break;
+            
+            // Get user location
+            getLocationBtn.addEventListener('click', () => {
+                if (navigator.geolocation) {
+                    locationStatus.textContent = 'جاري تحديد موقعك...';
+                    locationStatus.className = 'location-status';
+                    
+                    navigator.geolocation.getCurrentPosition(
+                        position => {
+                            const { latitude, longitude } = position.coords;
+                            userLocation = `${latitude}, ${longitude}`;
+                            locationInput.value = userLocation;
+                            locationStatus.textContent = 'تم تحديد موقعك بنجاح!';
+                            locationStatus.className = 'location-status success';
+                        },
+                        error => {
+                            locationStatus.textContent = 'فشل في تحديد موقعك. يرجى إدخال الموقع يدوياً.';
+                            locationStatus.className = 'location-status error';
                         }
-                        
-                        locationStatus.textContent = errorMessage;
-                        locationStatus.className = 'location-status error';
-                    },
-                    {
-                        enableHighAccuracy: true, // High accuracy mode (5 meters)
-                        timeout: 10000, // 10 seconds timeout
-                        maximumAge: 0 // Don't use cached position
-                    }
-                );
-            }
-
-            // Location button click event
-            getLocationBtn.addEventListener('click', getUserLocation);
-
-            // Send order via WhatsApp
+                    );
+                } else {
+                    locationStatus.textContent = 'المتصفح لا يدعم تحديد الموقع الجغرافي.';
+                    locationStatus.className = 'location-status error';
+                }
+            });
+            
+            // Submit order form
             orderForm.addEventListener('submit', (e) => {
                 e.preventDefault();
                 
-                const customerName = document.getElementById('customerName').value;
-                const customerPhone = document.getElementById('customerPhone').value;
-                const buildingNumber = document.getElementById('buildingNumber').value;
-                const apartmentNumber = document.getElementById('apartmentNumber').value;
-                const location = document.getElementById('location').value;
-                const landmark = document.getElementById('landmark').value;
+                const formData = new FormData(orderForm);
+                const orderData = {
+                    customerName: formData.get('customerName'),
+                    customerPhone: formData.get('customerPhone'),
+                    buildingNumber: formData.get('buildingNumber'),
+                    apartmentNumber: formData.get('apartmentNumber'),
+                    location: formData.get('location'),
+                    landmark: formData.get('landmark'),
+                    items: cart,
+                    total: cartTotal.textContent,
+                    orderDate: new Date().toISOString()
+                };
                 
-                // Create order message
-                let orderMessage = `طلب جديد من أسواق تبارك\n\n`;
-                orderMessage += `اسم العميل: ${customerName}\n`;
-                orderMessage += `رقم الموبايل: ${customerPhone}\n`;
-                orderMessage += `العنوان: عمارة ${buildingNumber}، شقة ${apartmentNumber}\n`;
-                orderMessage += `الموقع: ${location}\n`;
-                if (landmark) {
-                    orderMessage += `علامة مميزة: ${landmark}\n`;
-                }
-                orderMessage += `\nالمنتجات:\n`;
+                // Here you would normally send the order data to a server
+                // For this example, we'll just show a success message
+                console.log('Order submitted:', orderData);
                 
-                let total = 0;
-                cart.forEach(item => {
-                    const itemPrice = parseFloat(item.newPrice.replace(/[^0-9.]/g, ''));
-                    const itemTotal = itemPrice * item.quantity;
-                    total += itemTotal;
-                    orderMessage += `- ${item.name} (${item.quantity} × ${item.newPrice}) = ${itemTotal.toFixed(2)} جنيه\n`;
-                });
-                
-                orderMessage += `\nالإجمالي: ${total.toFixed(2)} جنيه`;
-                
-                // Send message via WhatsApp
-                const whatsappNumber1 = '201030566078'; // First number
-                const whatsappNumber2 = '201118091234';  // Second number
-                
-                // Open WhatsApp with message
-                const whatsappUrl = `https://wa.me/${whatsappNumber1}?text=${encodeURIComponent(orderMessage)}`;
-                window.open(whatsappUrl, '_blank');
+                // Clear cart and close modals
+                cart = [];
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartDisplay();
+                checkoutModal.classList.remove('active');
+                cartSidebar.classList.remove('active');
                 
                 // Show success message
-                checkoutModal.classList.remove('active');
                 successMessage.classList.add('active');
-                
-                // Empty cart
-                cart = [];
-                updateCartDisplay();
-                
-                // Reset form
-                orderForm.reset();
-                userLocation = null;
-                locationStatus.textContent = '';
             });
-
-            // Close success message
+            
             closeSuccessMessage.addEventListener('click', () => {
                 successMessage.classList.remove('active');
             });
-
-            function applyFilters() {
-                const searchTerm = searchInput.value.toLowerCase();
-                const activeCategoryBtn = categoryFilterContainer.querySelector('.filter-btn.active');
-                const selectedCategory = activeCategoryBtn ? activeCategoryBtn.dataset.category : 'all';
-
-                let filteredProducts = products;
-
-                // Filter by category
-                if (selectedCategory !== 'all') {
-                    filteredProducts = filteredProducts.filter(p => p.category === selectedCategory);
-                }
-
-                // Filter by search term
-                if (searchTerm) {
-                    filteredProducts = filteredProducts.filter(p => p.name.toLowerCase().includes(searchTerm));
-                }
-                
-                displayProducts(filteredProducts);
-            }
-
-            function displayProducts(productsToDisplay) {
+            
+            // Render products
+            function renderProducts(productsToRender = products) {
                 productList.innerHTML = '';
-                if (productsToDisplay.length === 0) {
-                    productList.innerHTML = '<p style="text-align:center; color:#777; grid-column: 1 / -1;">لا توجد منتجات تطابق هذا البحث.</p>';
-                    return;
-                }
-                productsToDisplay.forEach(product => {
-                    const card = document.createElement('div');
-                    card.className = 'product-card';
-
-                    const priceHTML = product.oldPrice
-                        ? `<div class="price-container">
-                               <p class="new-price">${product.newPrice}</p>
-                               <p class="old-price">${product.oldPrice}</p>
-                           </div>`
-                        : `<p class="price">${product.newPrice}</p>`;
-
-                    card.innerHTML = `
-                        <img src="${product.image || defaultImage}" alt="${product.name}" loading="lazy">
+                
+                productsToRender.forEach(product => {
+                    const productCard = document.createElement('div');
+                    productCard.className = 'product-card';
+                    
+                    productCard.innerHTML = `
+                        <img src="${product.image || defaultImage}" alt="${product.name}">
                         <div class="product-info">
                             <h3>${product.name}</h3>
-                            ${priceHTML}
-                            <button class="add-to-cart-btn" data-product='${JSON.stringify(product)}'>أضف للعربة</button>
+                            <div class="price">
+                                ${product.oldPrice ? `<span class="old-price">${product.oldPrice}</span>` : ''}
+                                <span class="new-price">${product.newPrice}</span>
+                            </div>
+                            <button class="add-to-cart-btn" data-product='${JSON.stringify(product)}'>
+                                <i class="fas fa-cart-plus"></i> أضف للسلة
+                            </button>
                         </div>
                     `;
-                    productList.appendChild(card);
+                    
+                    productList.appendChild(productCard);
                 });
                 
-                // Add event listeners for add to cart buttons
+                // Add event listeners to add to cart buttons
                 document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
-                    btn.addEventListener('click', (e) => {
-                        const product = JSON.parse(e.target.dataset.product);
-                        addToCart(product);
+                    btn.addEventListener('click', function() {
+                        const product = JSON.parse(this.dataset.product);
                         
-                        // Simple effect when adding
-                        cartIcon.style.transform = 'scale(1.2)';
+                        // Check if product is already in cart
+                        const existingItemIndex = cart.findIndex(item => item.name === product.name);
+                        
+                        if (existingItemIndex !== -1) {
+                            cart[existingItemIndex].quantity++;
+                        } else {
+                            cart.push({
+                                ...product,
+                                quantity: 1
+                            });
+                        }
+                        
+                        localStorage.setItem('cart', JSON.stringify(cart));
+                        updateCartDisplay();
+                        
+                        // Show a brief notification
+                        this.innerHTML = '<i class="fas fa-check"></i> تم الإضافة';
                         setTimeout(() => {
-                            cartIcon.style.transform = 'scale(1)';
-                        }, 300);
+                            this.innerHTML = '<i class="fas fa-cart-plus"></i> أضف للسلة';
+                        }, 1000);
                     });
                 });
                 
                 setupModalEventListeners();
             }
-
-            function setupCategoryFilter() {
-                if (!categoryFilterContainer) return;
-                const categories = ['all', ...new Set(products.map(p => p.category).filter(Boolean))];
+            
+            // Initialize category filter
+            function initCategoryFilter() {
+                const categories = ['all', ...new Set(products.map(p => p.category))];
                 
-                if (categories.length <= 2) { 
-                    categoryFilterContainer.style.display = 'none';
-                    return;
-                }
-                categoryFilterContainer.style.display = 'flex';
-
-                categoryFilterContainer.innerHTML = categories.map(category => {
-                    const isActive = category === 'all' ? 'active' : '';
-                    const name = categoryNames[category] || category;
-                    return `<button class="filter-btn ${isActive}" data-category="${category}">${name}</button>`;
-                }).join('');
-
-                categoryFilterContainer.addEventListener('click', (e) => {
-                    const target = e.target;
-                    if (!target.matches('.filter-btn')) return;
-
-                    categoryFilterContainer.querySelector('.filter-btn.active')?.classList.remove('active');
-                    target.classList.add('active');
-                    applyFilters();
+                categories.forEach(category => {
+                    const btn = document.createElement('button');
+                    btn.className = 'filter-btn';
+                    btn.textContent = categoryNames[category] || category;
+                    btn.dataset.category = category;
+                    
+                    if (category === 'all') {
+                        btn.classList.add('active');
+                    }
+                    
+                    btn.addEventListener('click', function() {
+                        // Update active state
+                        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                        this.classList.add('active');
+                        
+                        // Filter products
+                        if (category === 'all') {
+                            renderProducts(products);
+                        } else {
+                            const filtered = products.filter(p => p.category === category);
+                            renderProducts(filtered);
+                        }
+                    });
+                    
+                    categoryFilterContainer.appendChild(btn);
                 });
             }
-
-            // Event Listeners
-            searchInput.addEventListener('input', applyFilters);
-
-            // Initial Setup
-            setupCategoryFilter();
-            applyFilters();
-            updateCartDisplay();
-
-            // Update on storage change
-            window.addEventListener('storage', (event) => {
-                if (event.key === 'products') {
-                    products = JSON.parse(event.newValue) || [];
-                    setupCategoryFilter();
-                    applyFilters();
+            
+            // Search functionality
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                
+                if (searchTerm === '') {
+                    renderProducts(products);
+                    return;
                 }
+                
+                const filtered = products.filter(p => 
+                    p.name.toLowerCase().includes(searchTerm)
+                );
+                
+                renderProducts(filtered);
             });
+            
+            // Initialize the page
+            initCategoryFilter();
+            renderProducts();
+            updateCartDisplay();
         });
     </script>
 </body>
