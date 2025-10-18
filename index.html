@@ -10,13 +10,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
         :root {
-            --primary-color: #dc3545; /* Red */
-            --primary-color-dark: #a71d2a; /* Darker Red */
+            --primary-color: #dc3545;
+            --primary-color-dark: #a71d2a;
             --secondary-color: #6c757d;
             --background-color: #f4f6f9;
             --card-background: #ffffff;
             --text-color: #333;
-            --heading-color: #c82333; /* Heading Red */
+            --heading-color: #c82333;
             --shadow: 0 5px 15px rgba(0,0,0,0.08);
             --gold-color: #ffc107;
         }
@@ -33,7 +33,7 @@
             background-position: center;
             background-attachment: fixed;
             position: relative;
-            padding-top: 260px; /* Increased space for announcement bar and search section */
+            padding-top: 320px;
         }
         body::before {
             content: '';
@@ -46,7 +46,6 @@
             z-index: -1;
         }
         
-        /* Professional Announcement Bar */
         .announcement-bar {
             background: linear-gradient(135deg, #dc3545 0%, #a71d2a 100%);
             color: white;
@@ -157,10 +156,9 @@
             100% { left: 100%; }
         }
 
-        /* Search and Filter Container - Moved to top with increased gap from announcement bar */
         .controls-container {
             position: fixed;
-            top: 85px; /* Increased gap from announcement bar from 65px to 85px */
+            top: 85px;
             left: 0;
             right: 0;
             z-index: 2500;
@@ -179,7 +177,7 @@
         }
         
         #search-container {
-            margin-bottom: 25px; /* Reduced margin between search and category filter from 45px to 25px */
+            margin-bottom: 25px;
             position: relative;
         }
 
@@ -205,7 +203,6 @@
             color: #aaa;
         }
 
-        /* Category Filter */
         #category-filter {
             display: flex;
             justify-content: center;
@@ -280,7 +277,6 @@
             margin-left: 8px;
         }
 
-        /* Section Title */
         .section-title {
             text-align: center;
             font-size: 2em;
@@ -297,7 +293,6 @@
             margin: 8px auto 0;
         }
 
-        /* Simple and Reliable Slider Styles */
         .slider-section {
             margin: 40px 0;
             position: relative;
@@ -487,7 +482,6 @@
             border-radius: 6px;
         }
         
-        /* Special Offers Grid */
         .offers-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -587,7 +581,6 @@
             transform: translateY(-2px);
         }
 
-        /* Visitor Counter Styles */
         .visitor-counter {
             position: fixed;
             bottom: 20px;
@@ -651,7 +644,6 @@
              font-size: 1.3em;
         }
 
-        /* Location Section */
         .location-section {
             background-color: var(--card-background);
             padding: 40px;
@@ -690,7 +682,7 @@
         .map-container {
             position: relative;
             overflow: hidden;
-            padding-top: 75%; /* More square-like ratio */
+            padding-top: 75%;
             border-radius: 8px;
             border: 1px solid #ddd;
         }
@@ -703,7 +695,6 @@
             border: 0;
         }
 
-        /* Modal (Lightbox) Styles */
         .modal {
             display: none;
             position: fixed;
@@ -754,7 +745,6 @@
             cursor: pointer;
         }
         
-        /* Search Results Container */
         .search-results-container {
             display: none;
             padding: 20px 0;
@@ -800,230 +790,71 @@
             font-size: 1.2em;
         }
         
-        /* Elements to hide during search */
         .hide-on-search {
             transition: opacity 0.3s ease;
         }
         
         /* Responsive Styles */
         @media (max-width: 1200px) {
-            .container {
-                padding: 15px;
-            }
-            
-            header h1 {
-                font-size: 2.2em;
-            }
-            
-            .section-title {
-                font-size: 1.8em;
-            }
+            .container { padding: 15px; }
+            header h1 { font-size: 2.2em; }
+            .section-title { font-size: 1.8em; }
         }
         
         @media (max-width: 992px) {
-            .slide-content {
-                flex-direction: column;
-            }
-            
-            .slide-image {
-                max-width: 100%;
-            }
-            
-            .slide-title {
-                font-size: 1.8em;
-            }
-            
-            .slide-description {
-                font-size: 1em;
-            }
-            
-            .offers-grid {
-                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-                gap: 15px;
-            }
-            
-            #product-list {
-                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-                gap: 20px;
-            }
+            .slide-content { flex-direction: column; }
+            .slide-image { max-width: 100%; }
+            .slide-title { font-size: 1.8em; }
+            .slide-description { font-size: 1em; }
+            .offers-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 15px; }
+            #product-list { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
         }
         
         @media (max-width: 768px) {
-            body {
-                padding-top: 240px;
-            }
-            
-            .location-content { 
-                flex-direction: column; 
-            }
-            
-            .location-details { 
-                text-align: center; 
-                margin-bottom: 20px; 
-            }
-            
-            .announcement-bar {
-                flex-direction: column;
-                padding: 10px 0;
-            }
-            
-            .announcement-left, .announcement-right {
-                padding: 5px 20px;
-            }
-            
-            .announcement-links {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            .announcement-text {
-                font-size: 1em;
-            }
-            
-            .slide {
-                padding: 20px;
-            }
-            
-            .slide-title {
-                font-size: 1.5em;
-            }
-            
-            .slide-new-price {
-                font-size: 1.4em;
-            }
-            
-            .controls-container {
-                top: 125px;
-            }
-            
-            #search-container {
-                margin-bottom: 20px;
-            }
-            
-            header {
-                padding: 30px 15px;
-            }
-            
-            header h1 {
-                font-size: 2em;
-            }
-            
-            .contact-info {
-                font-size: 1em;
-                flex-direction: column;
-                gap: 10px;
-            }
-            
-            .section-title {
-                font-size: 1.6em;
-            }
-            
-            .offers-grid {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-                gap: 15px;
-            }
-            
-            #product-list {
-                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-                gap: 15px;
-            }
-            
-            .location-section {
-                padding: 30px 20px;
-            }
+            body { padding-top: 300px; }
+            .location-content { flex-direction: column; }
+            .location-details { text-align: center; margin-bottom: 20px; }
+            .announcement-bar { flex-direction: column; padding: 10px 0; }
+            .announcement-left, .announcement-right { padding: 5px 20px; }
+            .announcement-links { flex-wrap: wrap; justify-content: center; }
+            .announcement-text { font-size: 1em; }
+            .slide { padding: 20px; }
+            .slide-title { font-size: 1.5em; }
+            .slide-new-price { font-size: 1.4em; }
+            .controls-container { top: 125px; }
+            #search-container { margin-bottom: 20px; }
+            header { padding: 30px 15px; }
+            header h1 { font-size: 2em; }
+            .contact-info { font-size: 1em; flex-direction: column; gap: 10px; }
+            .section-title { font-size: 1.6em; }
+            .offers-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; }
+            #product-list { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 15px; }
+            .location-section { padding: 30px 20px; }
         }
         
         @media (max-width: 576px) {
-            body {
-                padding-top: 250px;
-            }
-            
-            .controls-container {
-                top: 185px;
-            }
-            
-            #search-container {
-                margin-bottom: 15px;
-            }
-            
-            .visitor-counter {
-                bottom: 90px;
-                right: 20px;
-                font-size: 0.9em;
-            }
-            
-            .slider-btn {
-                width: 40px;
-                height: 40px;
-                font-size: 1em;
-            }
-            
-            header {
-                padding: 20px 15px;
-            }
-            
-            header h1 {
-                font-size: 1.8em;
-                flex-direction: column;
-                gap: 10px;
-            }
-            
-            .logo {
-                width: 50px;
-                height: 50px;
-            }
-            
-            .section-title {
-                font-size: 1.4em;
-                margin-bottom: 20px;
-            }
-            
-            .offers-grid {
-                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-                gap: 10px;
-            }
-            
-            #product-list {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-                gap: 10px;
-            }
-            
-            .product-card img {
-                height: 180px;
-            }
-            
-            .product-info {
-                padding: 15px;
-            }
-            
-            .product-info h3 {
-                font-size: 1em;
-                margin-bottom: 8px;
-            }
-            
-            .product-info .price {
-                font-size: 1.1em;
-            }
-            
-            .add-to-cart-btn {
-                padding: 6px 12px;
-                font-size: 0.9em;
-            }
-            
-            .location-section {
-                padding: 20px 15px;
-            }
-            
-            .location-details h3 {
-                font-size: 1.3em;
-            }
-            
-            .location-details p {
-                font-size: 1em;
-            }
+            body { padding-top: 310px; }
+            .controls-container { top: 185px; }
+            #search-container { margin-bottom: 15px; }
+            .visitor-counter { bottom: 90px; right: 20px; font-size: 0.9em; }
+            .slider-btn { width: 40px; height: 40px; font-size: 1em; }
+            header { padding: 20px 15px; }
+            header h1 { font-size: 1.8em; flex-direction: column; gap: 10px; }
+            .logo { width: 50px; height: 50px; }
+            .section-title { font-size: 1.4em; margin-bottom: 20px; }
+            .offers-grid { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; }
+            #product-list { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+            .product-card img { height: 180px; }
+            .product-info { padding: 15px; }
+            .product-info h3 { font-size: 1em; margin-bottom: 8px; }
+            .product-info .price { font-size: 1.1em; }
+            .add-to-cart-btn { padding: 6px 12px; font-size: 0.9em; }
+            .location-section { padding: 20px 15px; }
+            .location-details h3 { font-size: 1.3em; }
+            .location-details p { font-size: 1em; }
         }
 
-        /* Shopping Cart Styles - Updated Position */
+        /* Shopping Cart Styles */
         .cart-icon {
             position: fixed;
             bottom: 20px;
@@ -1041,11 +872,7 @@
             z-index: 1001;
             transition: transform 0.3s;
         }
-
-        .cart-icon:hover {
-            transform: scale(1.1);
-        }
-
+        .cart-icon:hover { transform: scale(1.1); }
         .cart-count {
             position: absolute;
             top: -5px;
@@ -1061,7 +888,6 @@
             font-weight: bold;
             font-size: 0.9em;
         }
-
         .cart-sidebar {
             position: fixed;
             top: 0;
@@ -1070,16 +896,12 @@
             height: 100%;
             background: white;
             box-shadow: -2px 0 10px rgba(0,0,0,0.1);
-            z-index: 2000;
+            z-index: 3500; 
             transition: right 0.3s ease;
             display: flex;
             flex-direction: column;
         }
-
-        .cart-sidebar.active {
-            right: 0;
-        }
-
+        .cart-sidebar.active { right: 0; }
         .cart-header {
             background: var(--primary-color);
             color: white;
@@ -1088,20 +910,13 @@
             justify-content: space-between;
             align-items: center;
         }
-
-        .cart-items {
-            flex: 1;
-            overflow-y: auto;
-            padding: 20px;
-        }
-
+        .cart-items { flex: 1; overflow-y: auto; padding: 20px; }
         .cart-item {
             display: flex;
             align-items: center;
             padding: 15px 0;
             border-bottom: 1px solid #eee;
         }
-
         .cart-item img {
             width: 60px;
             height: 60px;
@@ -1109,26 +924,10 @@
             border-radius: 5px;
             margin-left: 15px;
         }
-
-        .cart-item-info {
-            flex: 1;
-        }
-
-        .cart-item-name {
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .cart-item-price {
-            color: var(--primary-color);
-        }
-
-        .quantity-controls {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
+        .cart-item-info { flex: 1; }
+        .cart-item-name { font-weight: bold; margin-bottom: 5px; }
+        .cart-item-price { color: var(--primary-color); }
+        .quantity-controls { display: flex; align-items: center; gap: 10px; }
         .quantity-btn {
             width: 30px;
             height: 30px;
@@ -1137,12 +936,7 @@
             cursor: pointer;
             border-radius: 5px;
         }
-
-        .cart-footer {
-            padding: 20px;
-            border-top: 1px solid #eee;
-        }
-
+        .cart-footer { padding: 20px; border-top: 1px solid #eee; }
         .cart-total {
             display: flex;
             justify-content: space-between;
@@ -1150,7 +944,6 @@
             font-weight: bold;
             margin-bottom: 15px;
         }
-
         .delivery-fee {
             display: flex;
             justify-content: space-between;
@@ -1158,7 +951,6 @@
             margin-bottom: 15px;
             color: var(--secondary-color);
         }
-
         .final-total {
             display: flex;
             justify-content: space-between;
@@ -1167,7 +959,6 @@
             margin-bottom: 15px;
             color: var(--primary-color);
         }
-
         .checkout-btn {
             width: 100%;
             padding: 15px;
@@ -1179,11 +970,7 @@
             cursor: pointer;
             transition: background 0.3s;
         }
-
-        .checkout-btn:hover {
-            background: var(--primary-color-dark);
-        }
-
+        .checkout-btn:hover { background: var(--primary-color-dark); }
         .close-cart {
             background: none;
             border: none;
@@ -1201,15 +988,11 @@
             width: 100%;
             height: 100%;
             background: rgba(0,0,0,0.5);
-            z-index: 3000;
+            z-index: 4000;
             align-items: center;
             justify-content: center;
         }
-
-        .checkout-modal.active {
-            display: flex;
-        }
-
+        .checkout-modal.active { display: flex; }
         .checkout-form {
             background: white;
             padding: 30px;
@@ -1219,28 +1002,18 @@
             max-height: 90vh;
             overflow-y: auto;
         }
-
         .checkout-form h2 {
             text-align: center;
             color: var(--primary-color);
             margin-bottom: 20px;
         }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
+        .form-group { margin-bottom: 20px; }
         .form-group label {
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
         }
-
-        .form-group label.required::after {
-            content: " *";
-            color: red;
-        }
-
+        .form-group label.required::after { content: " *"; color: red; }
         .form-group input {
             width: 100%;
             padding: 10px;
@@ -1248,12 +1021,10 @@
             border-radius: 5px;
             font-size: 1em;
         }
-
         .form-group input:focus {
             outline: none;
             border-color: var(--primary-color);
         }
-
         .submit-order-btn {
             width: 100%;
             padding: 15px;
@@ -1265,11 +1036,7 @@
             cursor: pointer;
             transition: background 0.3s;
         }
-
-        .submit-order-btn:hover {
-            background: var(--primary-color-dark);
-        }
-
+        .submit-order-btn:hover { background: var(--primary-color-dark); }
         .close-modal-btn {
             float: right;
             font-size: 24px;
@@ -1288,23 +1055,12 @@
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-            z-index: 4000;
+            z-index: 5000;
             text-align: center;
         }
-
-        .success-message.active {
-            display: block;
-        }
-
-        .success-message h3 {
-            color: #28a745;
-            margin-bottom: 15px;
-        }
-
-        .success-message p {
-            margin-bottom: 20px;
-        }
-
+        .success-message.active { display: block; }
+        .success-message h3 { color: #28a745; margin-bottom: 15px; }
+        .success-message p { margin-bottom: 20px; }
         .success-message button {
             padding: 10px 20px;
             background: var(--primary-color);
@@ -1325,10 +1081,7 @@
             margin-top: 10px;
             transition: background-color 0.3s;
         }
-        
-        .add-to-cart-btn:hover {
-            background-color: var(--primary-color-dark);
-        }
+        .add-to-cart-btn:hover { background-color: var(--primary-color-dark); }
 
         /* Location Button Styles */
         .location-btn {
@@ -1346,30 +1099,17 @@
             justify-content: center;
             gap: 8px;
         }
-        
-        .location-btn:hover {
-            background-color: #218838;
-        }
-
+        .location-btn:hover { background-color: #218838; }
         .location-status {
             margin-top: 5px;
             font-size: 0.9em;
             color: #666;
         }
-
-        .location-status.success {
-            color: #28a745;
-        }
-
-        .location-status.error {
-            color: #dc3545;
-        }
+        .location-status.success { color: #28a745; }
+        .location-status.error { color: #dc3545; }
 
         @media (max-width: 768px) {
-            .cart-sidebar {
-                width: 100%;
-                right: -100%;
-            }
+            .cart-sidebar { width: 100%; right: -100%; }
         }
     </style>
 <script type="importmap">
@@ -1385,7 +1125,6 @@
 </script>
 </head>
 <body>
-    <!-- Professional Announcement Bar -->
     <div class="announcement-bar">
         <div class="announcement-left">
             <img src="https://www2.0zz0.com/2025/09/26/15/391899626.png" alt="شعار أسواق تبارك" class="announcement-logo">
@@ -1410,7 +1149,6 @@
         </div>
     </div>
     
-    <!-- Search and Filter Container - Moved to top with increased gap from announcement bar -->
     <div class="controls-container">
         <div class="controls-wrapper">
             <div id="search-container">
@@ -1434,51 +1172,32 @@
             <i class="fas fa-bullhorn"></i> عروضنا الكبرى كل يوم جمعة من كل أسبوع - خصومات تصل إلى 50% على المنتجات المختارة
         </div>
 
-        <!-- Simple and Reliable Slider Section -->
         <section class="slider-section hide-on-search">
             <h2 class="section-title">أكثر العروض توفيراً</h2>
-            <div class="simple-slider" id="simpleSlider">
-                <!-- Slides will be generated by JavaScript -->
-            </div>
+            <div class="simple-slider" id="simpleSlider"></div>
             <div class="slider-controls">
-                <button class="slider-btn" id="prevSlide">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-                <button class="slider-btn" id="nextSlide">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
+                <button class="slider-btn" id="prevSlide"><i class="fas fa-chevron-right"></i></button>
+                <button class="slider-btn" id="nextSlide"><i class="fas fa-chevron-left"></i></button>
             </div>
-            <div class="slider-indicators" id="sliderIndicators">
-                <!-- Indicators will be generated by JavaScript -->
-            </div>
+            <div class="slider-indicators" id="sliderIndicators"></div>
         </section>
         
-        <!-- Special Offers Grid -->
         <section class="offers-section hide-on-search">
             <h2 class="section-title">عروض مميزة</h2>
-            <div class="offers-grid" id="offersGrid">
-                <!-- Offer cards will be generated by JavaScript -->
-            </div>
+            <div class="offers-grid" id="offersGrid"></div>
         </section>
         
-        <!-- Search Results Container -->
         <div class="search-results-container" id="searchResultsContainer">
             <div class="search-results-header">
                 <h2 class="search-results-title">نتائج البحث</h2>
-                <button class="clear-search-btn" id="clearSearchBtn">
-                    <i class="fas fa-times"></i> مسح البحث
-                </button>
+                <button class="clear-search-btn" id="clearSearchBtn"><i class="fas fa-times"></i> مسح البحث</button>
             </div>
-            <div id="searchResultsList">
-                <!-- Search results will appear here -->
-            </div>
+            <div id="searchResultsList"></div>
         </div>
         
         <main class="hide-on-search">
             <h2 class="section-title">منتجاتنا</h2>
-            <div id="product-list">
-                <!-- المنتجات ستظهر هنا -->
-            </div>
+            <div id="product-list"></div>
         </main>
 
         <section class="location-section hide-on-search">
@@ -1493,102 +1212,65 @@
               </div>
                 <div class="location-map">
                     <div class="map-container">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3457.292968442386!2d31.003345077255545!3d29.94225063480985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145851003dcc9bef%3A0xc9ea5239f1d807db!2z2KfYs9mI2KfZgiDYqtio2KfYsdmD!5e0!3m2!1sar!2seg!4v1760059879807!5m2!1sar!2seg" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" title="موقع أسواق تبارك فرع 6 أكتوبر"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3457.292968442386!2d31.003345077255545!3d29.94225063480985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145851003dcc9bef%3A0xc9ea5239f1d807db!2z2KfYs9mI2KfZgiDYqtio2KfYsdmD!5e0!3m2!1sar!2seg!4v1760059879807!5m2!1sar!2seg" allowfullscreen="" loading="lazy" title="موقع أسواق تبارك فرع 6 أكتوبر"></iframe>
                     </div>
                 </div>
             </div>
         </section>
     </div>
 
-    <!-- Image Modal -->
     <div id="image-modal" class="modal">
         <span class="close-modal">&times;</span>
         <img class="modal-content" id="modal-img">
         <div id="caption"></div>
     </div>
 
-    <!-- Shopping Cart Elements -->
-    <!-- Cart Icon - Moved to bottom left -->
     <div class="cart-icon" id="cartIcon">
         <i class="fas fa-shopping-cart"></i>
         <span class="cart-count" id="cartCount">0</span>
     </div>
 
-    <!-- Cart Sidebar -->
     <div class="cart-sidebar" id="cartSidebar">
         <div class="cart-header">
             <h3>عربة التسوق</h3>
             <button class="close-cart" id="closeCart">&times;</button>
         </div>
-        <div class="cart-items" id="cartItems">
-            <!-- Cart items will appear here -->
-        </div>
+        <div class="cart-items" id="cartItems"></div>
         <div class="cart-footer">
-            <div class="cart-total">
-                <span>المجموع:</span>
-                <span id="cartTotal">0.00 جنيه</span>
-            </div>
-            <div class="delivery-fee">
-                <span>رسوم التوصيل:</span>
-                <span id="deliveryFee">10.00 جنيه</span>
-            </div>
-            <div class="final-total">
-                <span>الإجمالي:</span>
-                <span id="finalTotal">10.00 جنيه</span>
-            </div>
+            <div class="cart-total"><span>المجموع:</span><span id="cartTotal">0.00 جنيه</span></div>
+            <div class="delivery-fee"><span>رسوم التوصيل:</span><span id="deliveryFee">10.00 جنيه</span></div>
+            <div class="final-total"><span>الإجمالي:</span><span id="finalTotal">10.00 جنيه</span></div>
             <button class="checkout-btn" id="checkoutBtn">إرسال الطلبية</button>
         </div>
     </div>
 
-    <!-- Checkout Modal -->
     <div class="checkout-modal" id="checkoutModal">
         <div class="checkout-form">
             <span class="close-modal-btn" id="closeCheckoutModal">&times;</span>
             <h2>إتمام الطلب</h2>
             <form id="orderForm">
-                <div class="form-group">
-                    <label for="customerName" class="required">اسم العميل</label>
-                    <input type="text" id="customerName" name="customerName" required>
-                </div>
-                <div class="form-group">
-                    <label for="customerPhone" class="required">رقم الموبايل</label>
-                    <input type="tel" id="customerPhone" name="customerPhone" required>
-                </div>
-                <div class="form-group">
-                    <label for="buildingNumber" class="required">رقم العمارة</label>
-                    <input type="text" id="buildingNumber" name="buildingNumber" required>
-                </div>
-                <div class="form-group">
-                    <label for="apartmentNumber" class="required">رقم الشقة</label>
-                    <input type="text" id="apartmentNumber" name="apartmentNumber" required>
-                </div>
+                <div class="form-group"><label for="customerName" class="required">اسم العميل</label><input type="text" id="customerName" name="customerName" required></div>
+                <div class="form-group"><label for="customerPhone" class="required">رقم الموبايل</label><input type="tel" id="customerPhone" name="customerPhone" required></div>
+                <div class="form-group"><label for="buildingNumber" class="required">رقم العمارة</label><input type="text" id="buildingNumber" name="buildingNumber" required></div>
+                <div class="form-group"><label for="apartmentNumber" class="required">رقم الشقة</label><input type="text" id="apartmentNumber" name="apartmentNumber" required></div>
                 <div class="form-group">
                     <label for="location" class="required">الموقع الجغرافي</label>
                     <input type="text" id="location" name="location" readonly required>
-                    <button type="button" class="location-btn" id="getLocationBtn">
-                        <i class="fas fa-map-marker-alt"></i>
-                        احصل على موقعي الحالي
-                    </button>
+                    <button type="button" class="location-btn" id="getLocationBtn"><i class="fas fa-map-marker-alt"></i> احصل على موقعي الحالي</button>
                     <div class="location-status" id="locationStatus"></div>
                 </div>
-                <div class="form-group">
-                    <label for="landmark">علامة مميزة (اختياري)</label>
-                    <input type="text" id="landmark" name="landmark">
-                </div>
+                <div class="form-group"><label for="landmark">علامة مميزة (اختياري)</label><input type="text" id="landmark" name="landmark"></div>
                 <button type="submit" class="submit-order-btn">إرسال الطلبية</button>
             </form>
         </div>
     </div>
 
-    <!-- Success Message -->
     <div class="success-message" id="successMessage">
         <h3>تم إرسال طلبك بنجاح!</h3>
         <p>سيتم التواصل معك قريباً لتأكيد الطلب.</p>
         <button id="closeSuccessMessage">حسناً</button>
     </div>
 
-    <!-- Visitor Counter -->
     <div class="visitor-counter" id="visitorCounter">
         <i class="fas fa-users"></i>
         <span id="visitorCount">0</span> زائر
@@ -1599,482 +1281,41 @@
             // Visitor Counter Logic
             const visitorCounter = document.getElementById('visitorCounter');
             const visitorCount = document.getElementById('visitorCount');
-            
-            // Check if this is a new visitor
             const hasVisitedBefore = localStorage.getItem('hasVisitedBefore');
             let totalVisitors = parseInt(localStorage.getItem('totalVisitors') || '0');
-            
-            // If this is a new visitor, increment the counter
             if (!hasVisitedBefore) {
                 totalVisitors++;
                 localStorage.setItem('totalVisitors', totalVisitors.toString());
                 localStorage.setItem('hasVisitedBefore', 'true');
             }
-            
-            // Update the visitor count display
             visitorCount.textContent = totalVisitors;
             
-            // Simple and Reliable Slider Logic
+            // Global variables
+            let products = [];
+            let cart = [];
+            let currentSlide = 0;
+            
+            // DOM Elements
             const simpleSlider = document.getElementById('simpleSlider');
             const prevSlideBtn = document.getElementById('prevSlide');
             const nextSlideBtn = document.getElementById('nextSlide');
             const sliderIndicators = document.getElementById('sliderIndicators');
             const offersGrid = document.getElementById('offersGrid');
-            
-            // Featured offers for the slider
-            const featuredOffers = [
-                {
-                    name: "طبق بيض أبيض",
-                    oldPrice: "170.00 جنيه",
-                    newPrice: "159.00 جنيه",
-                    discount: "-25%",
-                    image: "https://cdn.metro-cc.ru/ru/ru_pim_195676001001_01.png",
-                    description: "بيض طازج من مزارع مختارة، غني بالبروتينات والفيتامينات الضرورية لصحة عائلتك"
-                },
-                {
-                    name: "كيلو سمن سايب",
-                    oldPrice: "120.00 جنيه",
-                    newPrice: "100.00 جنيه",
-                    discount: "-20%",
-                    image: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/201911/ghee.png",
-                    description: "سمن طبيعي 100% من مصادر موثوقة، يضيف نكهة فريدة لأطباقك المفضلة"
-                },
-                {
-                    name: "كيلو أرز وسط",
-                    oldPrice: "28.00 جنيه",
-                    newPrice: "22.00 جنيه",
-                    discount: "-20%",
-                    image: "https://www.albayan.ae/assets/archives/images/2023/08/25/4715792.jpg",
-                    description: "أرز عالي الجودة، حبوب متوسطة الحجم مثالية للأطباق الشرقية التقليدية"
-                },
-                {
-                    name: "2 زيت سندباد",
-                    oldPrice: "130.00 جنيه",
-                    newPrice: "105.00 جنيه",
-                    discount: "-25%",
-                    image: "https://lana.gov.ly/images/src/215410.jpg",
-                    description: "زيت نباتي عالي الجودة، مثالي للطهي والقلي الصحي بدرجة حرارة عالية"
-                }
-            ];
-            
-            // Additional offers for the grid
-            const additionalOffers = [
-                {
-                    name: "2 كيلو دقيق سايب",
-                    oldPrice: "40.00 جنيه",
-                    newPrice: "35.00 جنيه",
-                    discount: "-25%",
-                    image: "https://cdn.nur.kz/images/1200x675/7d9be34e89d9523d.jpeg"
-                },
-                {
-                    name: "تونة معلبة",
-                    oldPrice: "8.00 جنيه",
-                    newPrice: "6.00 جنيه",
-                    discount: "-25%",
-                    image: "https://images.unsplash.com/photo-1598214662951-bcb83f085758?w=500&q=60"
-                },
-                {
-                    name: "معجون طماطم",
-                    oldPrice: "4.00 جنيه",
-                    newPrice: "3.00 جنيه",
-                    discount: "-25%",
-                    image: "https://images.unsplash.com/photo-1608664838634-73d82f7c2a79?w=500&q=60"
-                },
-                {
-                    name: "جبنة كريمية",
-                    oldPrice: "18.00 جنيه",
-                    newPrice: "13.50 جنيه",
-                    discount: "-25%",
-                    image: "https://images.unsplash.com/photo-1628088200424-44b4077fab41?w=500&q=60"
-                }
-            ];
-            
-            // Product data
-            const products = [
-                {
-                    id: 1,
-                    name: "طبق بيض أبيض",
-                    price: 159.00,
-                    oldPrice: 170.00,
-                    category: "منتجات الألبان",
-                    image: "https://cdn.metro-cc.ru/ru/ru_pim_195676001001_01.png"
-                },
-                {
-                    id: 2,
-                    name: "كيلو سمن سايب",
-                    price: 100.00,
-                    oldPrice: 120.00,
-                    category: "زيوت ودهون",
-                    image: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/201911/ghee.png"
-                },
-                {
-                    id: 3,
-                    name: "كيلو أرز وسط",
-                    price: 22.00,
-                    oldPrice: 28.00,
-                    category: "حبوب ومواد غذائية",
-                    image: "https://www.albayan.ae/assets/archives/images/2023/08/25/4715792.jpg"
-                },
-                {
-                    id: 4,
-                    name: "2 زيت سندباد",
-                    price: 105.00,
-                    oldPrice: 130.00,
-                    category: "زيوت ودهون",
-                    image: "https://lana.gov.ly/images/src/215410.jpg"
-                },
-                {
-                    id: 5,
-                    name: "2 كيلو دقيق سايب",
-                    price: 35.00,
-                    oldPrice: 40.00,
-                    category: "حبوب ومواد غذائية",
-                    image: "https://cdn.nur.kz/images/1200x675/7d9be34e89d9523d.jpeg"
-                },
-                {
-                    id: 6,
-                    name: "تونة معلبة",
-                    price: 6.00,
-                    oldPrice: 8.00,
-                    category: "معلبات",
-                    image: "https://images.unsplash.com/photo-1598214662951-bcb83f085758?w=500&q=60"
-                },
-                {
-                    id: 7,
-                    name: "معجون طماطم",
-                    price: 3.00,
-                    oldPrice: 4.00,
-                    category: "صلصات وتوابل",
-                    image: "https://images.unsplash.com/photo-1608664838634-73d82f7c2a79?w=500&q=60"
-                },
-                {
-                    id: 8,
-                    name: "جبنة كريمية",
-                    price: 13.50,
-                    oldPrice: 18.00,
-                    category: "منتجات الألبان",
-                    image: "https://images.unsplash.com/photo-1628088200424-44b4077fab41?w=500&q=60"
-                }
-            ];
-            
-            let currentSlide = 0;
-            let slideInterval;
-            
-            // Initialize simple slider
-            function initSimpleSlider() {
-                // Create slides
-                featuredOffers.forEach((offer, index) => {
-                    const slide = document.createElement('div');
-                    slide.className = `slide ${index === 0 ? 'active' : ''}`;
-                    slide.innerHTML = `
-                        <div class="slide-content">
-                            <div class="slide-image">
-                                <img src="${offer.image}" alt="${offer.name}">
-                                <div class="slide-badge">${offer.discount}</div>
-                            </div>
-                            <div class="slide-info">
-                                <h3 class="slide-title">${offer.name}</h3>
-                                <p class="slide-description">${offer.description}</p>
-                                <div class="slide-price">
-                                    <span class="slide-new-price">${offer.newPrice}</span>
-                                    <span class="slide-old-price">${offer.oldPrice}</span>
-                                </div>
-                                <button class="slide-cta" data-product='${JSON.stringify(offer)}'>
-                                    <i class="fas fa-cart-plus"></i> أضف للسلة
-                                </button>
-                            </div>
-                        </div>
-                    `;
-                    simpleSlider.appendChild(slide);
-                    
-                    // Create indicator
-                    const indicator = document.createElement('div');
-                    indicator.className = `indicator ${index === 0 ? 'active' : ''}`;
-                    indicator.addEventListener('click', () => goToSlide(index));
-                    sliderIndicators.appendChild(indicator);
-                });
-                
-                // Create offer cards for the grid
-                additionalOffers.forEach(offer => {
-                    const card = document.createElement('div');
-                    card.className = 'offer-card';
-                    card.innerHTML = `
-                        <div class="offer-card-image">
-                            <img src="${offer.image}" alt="${offer.name}">
-                            <div class="offer-card-badge">${offer.discount}</div>
-                        </div>
-                        <div class="offer-card-content">
-                            <h3 class="offer-card-title">${offer.name}</h3>
-                            <div class="offer-card-price">
-                                <span class="offer-card-new-price">${offer.newPrice}</span>
-                                <span class="offer-card-old-price">${offer.oldPrice}</span>
-                            </div>
-                            <button class="offer-card-btn" data-product='${JSON.stringify(offer)}'>
-                                <i class="fas fa-cart-plus"></i> أضف للسلة
-                            </button>
-                        </div>
-                    `;
-                    offersGrid.appendChild(card);
-                });
-                
-                // Add event listeners to add to cart buttons
-                document.querySelectorAll('.slide-cta, .offer-card-btn').forEach(btn => {
-                    btn.addEventListener('click', function() {
-                        const product = JSON.parse(this.dataset.product);
-                        addToCart(product);
-                        
-                        // Show a brief notification
-                        const originalHTML = this.innerHTML;
-                        this.innerHTML = '<i class="fas fa-check"></i> تمت الإضافة';
-                        this.disabled = true;
-                        
-                        setTimeout(() => {
-                            this.innerHTML = originalHTML;
-                            this.disabled = false;
-                        }, 1500);
-                    });
-                });
-                
-                // Start auto-slide
-                startSlideShow();
-            }
-            
-            // Slider functions
-            function goToSlide(index) {
-                const slides = document.querySelectorAll('.slide');
-                const indicators = document.querySelectorAll('.indicator');
-                
-                // Hide current slide
-                slides[currentSlide].classList.remove('active');
-                indicators[currentSlide].classList.remove('active');
-                
-                // Show new slide
-                currentSlide = index;
-                slides[currentSlide].classList.add('active');
-                indicators[currentSlide].classList.add('active');
-                
-                // Reset auto-slide timer
-                clearInterval(slideInterval);
-                startSlideShow();
-            }
-            
-            function nextSlide() {
-                const slides = document.querySelectorAll('.slide');
-                const nextIndex = (currentSlide + 1) % slides.length;
-                goToSlide(nextIndex);
-            }
-            
-            function prevSlide() {
-                const slides = document.querySelectorAll('.slide');
-                const prevIndex = (currentSlide - 1 + slides.length) % slides.length;
-                goToSlide(prevIndex);
-            }
-            
-            function startSlideShow() {
-                slideInterval = setInterval(nextSlide, 5000);
-            }
-            
-            // Initialize product list
-            function initProductList() {
-                const productList = document.getElementById('product-list');
-                
-                products.forEach(product => {
-                    const productCard = document.createElement('div');
-                    productCard.className = 'product-card';
-                    productCard.dataset.category = product.category;
-                    
-                    productCard.innerHTML = `
-                        <img src="${product.image}" alt="${product.name}">
-                        <div class="product-info">
-                            <h3>${product.name}</h3>
-                            <div class="price">
-                                ${product.oldPrice ? `<span class="old-price" style="text-decoration: line-through; color: #999; font-size: 0.9em; margin-left: 10px;">${product.oldPrice} جنيه</span>` : ''}
-                                <span class="new-price">${product.price} جنيه</span>
-                            </div>
-                            <button class="add-to-cart-btn" data-product='${JSON.stringify(product)}'>
-                                <i class="fas fa-cart-plus"></i> أضف للسلة
-                            </button>
-                        </div>
-                    `;
-                    
-                    productList.appendChild(productCard);
-                });
-                
-                // Add event listeners to add to cart buttons
-                document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
-                    btn.addEventListener('click', function() {
-                        const product = JSON.parse(this.dataset.product);
-                        addToCart(product);
-                        
-                        // Show a brief notification
-                        const originalHTML = this.innerHTML;
-                        this.innerHTML = '<i class="fas fa-check"></i> تمت الإضافة';
-                        this.disabled = true;
-                        
-                        setTimeout(() => {
-                            this.innerHTML = originalHTML;
-                            this.disabled = false;
-                        }, 1500);
-                    });
-                });
-            }
-            
-            // Initialize category filter
-            function initCategoryFilter() {
-                const categoryFilter = document.getElementById('category-filter');
-                const categories = [...new Set(products.map(product => product.category))];
-                
-                // Add "All" button
-                const allBtn = document.createElement('button');
-                allBtn.className = 'filter-btn active';
-                allBtn.textContent = 'الكل';
-                allBtn.dataset.category = 'all';
-                categoryFilter.appendChild(allBtn);
-                
-                // Add category buttons
-                categories.forEach(category => {
-                    const btn = document.createElement('button');
-                    btn.className = 'filter-btn';
-                    btn.textContent = category;
-                    btn.dataset.category = category;
-                    categoryFilter.appendChild(btn);
-                });
-                
-                // Add event listeners to filter buttons
-                document.querySelectorAll('.filter-btn').forEach(btn => {
-                    btn.addEventListener('click', function() {
-                        // Update active state
-                        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                        this.classList.add('active');
-                        
-                        // Filter products
-                        const category = this.dataset.category;
-                        const productCards = document.querySelectorAll('.product-card');
-                        
-                        productCards.forEach(card => {
-                            if (category === 'all' || card.dataset.category === category) {
-                                card.style.display = 'flex';
-                            } else {
-                                card.style.display = 'none';
-                            }
-                        });
-                    });
-                });
-            }
-            
-            // Search functionality
-            function initSearch() {
-                const searchInput = document.getElementById('search-input');
-                const searchResultsContainer = document.getElementById('searchResultsContainer');
-                const searchResultsList = document.getElementById('searchResultsList');
-                const clearSearchBtn = document.getElementById('clearSearchBtn');
-                const elementsToHide = document.querySelectorAll('.hide-on-search');
-                
-                searchInput.addEventListener('input', function() {
-                    const searchTerm = this.value.toLowerCase().trim();
-                    
-                    if (searchTerm.length > 0) {
-                        // Show search results container and hide other elements
-                        searchResultsContainer.classList.add('active');
-                        elementsToHide.forEach(element => {
-                            element.style.display = 'none';
-                        });
-                        
-                        // Filter products based on search term
-                        const filteredProducts = products.filter(product => 
-                            product.name.toLowerCase().includes(searchTerm)
-                        );
-                        
-                        // Clear previous results
-                        searchResultsList.innerHTML = '';
-                        
-                        if (filteredProducts.length > 0) {
-                            // Display search results
-                            const resultsGrid = document.createElement('div');
-                            resultsGrid.className = 'product-list';
-                            resultsGrid.style.display = 'grid';
-                            resultsGrid.style.gridTemplateColumns = 'repeat(auto-fill, minmax(280px, 1fr))';
-                            resultsGrid.style.gap = '25px';
-                            
-                            filteredProducts.forEach(product => {
-                                const productCard = document.createElement('div');
-                                productCard.className = 'product-card';
-                                
-                                productCard.innerHTML = `
-                                    <img src="${product.image}" alt="${product.name}">
-                                    <div class="product-info">
-                                        <h3>${product.name}</h3>
-                                        <div class="price">
-                                            ${product.oldPrice ? `<span class="old-price" style="text-decoration: line-through; color: #999; font-size: 0.9em; margin-left: 10px;">${product.oldPrice} جنيه</span>` : ''}
-                                            <span class="new-price">${product.price} جنيه</span>
-                                        </div>
-                                        <button class="add-to-cart-btn" data-product='${JSON.stringify(product)}'>
-                                            <i class="fas fa-cart-plus"></i> أضف للسلة
-                                        </button>
-                                    </div>
-                                `;
-                                
-                                resultsGrid.appendChild(productCard);
-                            });
-                            
-                            searchResultsList.appendChild(resultsGrid);
-                            
-                            // Add event listeners to add to cart buttons
-                            document.querySelectorAll('#searchResultsList .add-to-cart-btn').forEach(btn => {
-                                btn.addEventListener('click', function() {
-                                    const product = JSON.parse(this.dataset.product);
-                                    addToCart(product);
-                                    
-                                    // Show a brief notification
-                                    const originalHTML = this.innerHTML;
-                                    this.innerHTML = '<i class="fas fa-check"></i> تمت الإضافة';
-                                    this.disabled = true;
-                                    
-                                    setTimeout(() => {
-                                        this.innerHTML = originalHTML;
-                                        this.disabled = false;
-                                    }, 1500);
-                                });
-                            });
-                        } else {
-                            // Display no results message
-                            const noResults = document.createElement('div');
-                            noResults.className = 'no-results';
-                            noResults.innerHTML = `
-                                <i class="fas fa-search" style="font-size: 3em; margin-bottom: 15px; color: var(--secondary-color);"></i>
-                                <p>لم يتم العثور على نتائج لـ "${searchTerm}"</p>
-                                <p>يرجى المحاولة بكلمات مفتاحية مختلفة</p>
-                            `;
-                            searchResultsList.appendChild(noResults);
-                        }
-                    } else {
-                        // Hide search results container and show other elements
-                        searchResultsContainer.classList.remove('active');
-                        elementsToHide.forEach(element => {
-                            element.style.display = '';
-                        });
-                    }
-                });
-                
-                // Clear search button functionality
-                clearSearchBtn.addEventListener('click', function() {
-                    searchInput.value = '';
-                    searchResultsContainer.classList.remove('active');
-                    elementsToHide.forEach(element => {
-                        element.style.display = '';
-                    });
-                });
-            }
-            
-            // Shopping Cart functionality
-            let cart = [];
+            const productList = document.getElementById('product-list');
+            const searchInput = document.getElementById('search-input');
+            const categoryFilter = document.getElementById('category-filter');
+            const searchResultsContainer = document.getElementById('searchResultsContainer');
+            const searchResultsList = document.getElementById('searchResultsList');
+            const clearSearchBtn = document.getElementById('clearSearchBtn');
+            const hideOnSearchElements = document.querySelectorAll('.hide-on-search');
             const cartIcon = document.getElementById('cartIcon');
             const cartSidebar = document.getElementById('cartSidebar');
             const closeCart = document.getElementById('closeCart');
             const cartItems = document.getElementById('cartItems');
             const cartCount = document.getElementById('cartCount');
             const cartTotal = document.getElementById('cartTotal');
-            const finalTotal = document.getElementById('finalTotal');
+            const deliveryFeeElement = document.getElementById('deliveryFee');
+            const finalTotalElement = document.getElementById('finalTotal');
             const checkoutBtn = document.getElementById('checkoutBtn');
             const checkoutModal = document.getElementById('checkoutModal');
             const closeCheckoutModal = document.getElementById('closeCheckoutModal');
@@ -2085,142 +1326,409 @@
             const locationInput = document.getElementById('location');
             const locationStatus = document.getElementById('locationStatus');
             
-            // Load cart from localStorage
+            // Product data
+            const allProducts = [
+                { id: 1, name: "طبق بيض ابيض", newPrice: "159.00 جنيه", oldPrice: "170.00 جنيه", image: "https://cdn.metro-cc.ru/ru/ru_pim_195676001001_01.png", category: "ألبان وبيض", price: 159 },
+                { id: 2, name: "طبق بيض احمر", newPrice: "165.00 جنيه", oldPrice: "175.00 جنيه", image: "https://avatars.mds.yandex.net/get-mpic/4614113/img_id4420346577537823307.jpeg/orig", category: "ألبان وبيض", price: 165 },
+                { id: 3, name: "كيلو ارز وسط", newPrice: "23.00 جنيه/كجم", oldPrice: "28.00 جنيه/كجم", image: "https://yuz.uz/file/news/79cb22d40fd319ba06554c86a515c4c9.jpg", category: "عطارة وعلافة", price: 23 },
+                { id: 4, name: "كيلو ارز عريض", newPrice: "28.00 جنيه/كجم", oldPrice: "32.00 جنيه/كجم", image: "https://avatars.mds.yandex.net/get-mpic/4547325/img_id7962333466218946176.jpeg/orig", category: "عطارة وعلافة", price: 28 },
+                { id: 5, name: "شكارة ارز 25 كجم وسط", newPrice: "570.00 جنيه", oldPrice: "620.00 جنيه", image: "https://mir-s3-cdn-cf.behance.net/project_modules/hd/24432229385577.55f071518fbd7.jpg", category: "عطارة وعلافة", price: 570 },
+                { id: 6, name: "شكارة ارز 25 كيلو عريض", newPrice: "675.00 جنيه", oldPrice: "740.00 جنيه", image: "https://mir-s3-cdn-cf.behance.net/project_modules/hd/24432229385577.55f071518fbd7.jpg", category: "عطارة وعلافة", price: 675 },
+                { id: 7, name: "كيلو مكرونة انواع ماعدا الاسباجيتى", newPrice: "20.00 جنيه", oldPrice: "24.00 جنيه", image: "https://cdn-uz.kursiv.media/wp-content/uploads/2024/08/scale_1200-16.jpg", category: "عطارة وعلافة", price: 20 },
+                { id: 8, name: "2 كيلو سكر وزن 1000جم صافى", newPrice: "58.00 جنيه", oldPrice: "70.00 جنيه", image: "https://www2.0zz0.com/2025/10/10/02/865311217.png", category: "عطارة وعلافة", price: 58 },
+                { id: 9, name: "شكارة مكرونة اى نوع ماعدا الاسباجيتى ", newPrice: "195.00 جنيه", oldPrice: "220.00 جنيه", image: "https://cdn-uz.kursiv.media/wp-content/uploads/2024/08/scale_1200-16.jpg", category: "عطارة وعلافة", price: 195 },
+                { id: 10, name: "2 زيت سندباد", newPrice: "105.00 جنيه", oldPrice: "130.00 جنيه", image: "https://lana.gov.ly/images/src/215410.jpg", category: "سمن وزيوت", price: 105 },
+                { id: 11, name: "كيلو سمن سايب روابى-جنه-كريستال", newPrice: "100.00 جنيه", oldPrice: "120.00 جنيه", image: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/201911/ghee.png", category: "سمن وزيوت", price: 100 },
+                { id: 12, name: "2 كيلو دقيق سايب", newPrice: "35.00 جنيه", oldPrice: "40.00 جنيه", image: "https://avatars.mds.yandex.net/get-mpic/5284145/img_id1750820196963638749.jpeg/orig", category: "عطارة وعلافة", price: 35 },
+                { id: 13, name: "كيلو عسل اسمر", newPrice: "38.00 جنيه", oldPrice: "45.00 جنيه", image: "https://img.diytrade.com/smimg/2935125/49070690-11280215-0/Molasses_sugar_cane/8445.jpg", category: "عطارة وعلافة", price: 38 },
+                { id: 14, name: "كيلو طحينة سايب", newPrice: "120.00 جنيه", oldPrice: "160.00 جنيه", image: "https://img.kompass.com/sys-master-images/h9d/h04/9151179620382/tahini-hss-jpg", category: "عطارة وعلافة", price: 120 },
+                { id: 15, name: "باكت ملح بونو", newPrice: "35.00 جنيه", oldPrice: "48.00 جنيه", image: "https://www2.0zz0.com/2025/10/10/02/606345585.jpg", category: "عطارة وعلافة", price: 35 },
+                { id: 16, name: "3 خل العزة", newPrice: "25.00 جنيه", oldPrice: "30.00 جنيه", image: "https://m.media-amazon.com/images/S/aplus-media/sota/43272024-50ec-492b-ac71-fe8e028d2159.__CR0,0,970,600_PT0_SX970_V1___.jpg", category: "ماركت", price: 25 },
+                { id: 17, name: "5 كيس مكرونة غالية مشكل", newPrice: "50.00 جنيه", oldPrice: "60.00 جنيه", image: "https://m.media-amazon.com/images/I/618Kej3if1L._AC_UF1000,1000_QL80_.jpg", category: "ماركت", price: 50 },
+                { id: 18, name: "كيلو مخلل بوليف", newPrice: "20.00 جنيه", oldPrice: "30.00 جنيه", image: "https://i.ytimg.com/vi/Y2_CtbPh3Es/maxresdefault.jpg", category: "مخللات", price: 20 },
+                { id: 19, name: "5 كيس مكرونة الملكة مشكل", newPrice: "69.00 جنيه", oldPrice: "75.00 جنيه", image: "https://i1.sndcdn.com/artworks-czylEj2FpnwIX9xD-K9X77w-t500x500.jpg", category: "ماركت", price: 69 },
+                { id: 20, name: "برجر حلوانى عائلى 25 ق", newPrice: "205.00 جنيه", oldPrice: "220.00 جنيه", image: "https://www2.0zz0.com/2025/09/26/01/864482321.jpg", category: "لحوم ومجمدات", price: 205 },
+                { id: 21, name: "برجر المراعى عائلى 25 ق", newPrice: "115.00 جنيه", oldPrice: "125.00 جنيه", image: "https://www2.0zz0.com/2025/09/26/01/478227720.jpg", category: "لحوم ومجمدات", price: 115 },
+                { id: 22, name: "برجر توابل شرقية عائلى 25 ق", newPrice: "125.00 جنيه", oldPrice: "135.00 جنيه", image: "https://www2.0zz0.com/2025/09/26/01/532428282.jpg", category: "لحوم ومجمدات", price: 125 },
+                { id: 23, name: "كيلو رنجة درجة أولى", newPrice: "115.00 جنيه/كجم", oldPrice: "140.00 جنيه/كجم", image: "https://ychef.files.bbci.co.uk/976x549/p04xs9bl.jpg0", category: "لحوم ومجمدات", price: 115 },
+                { id: 24, name: "زجاجة زيت حلوة- قلية 5 لتر", newPrice: "315.00 جنيه", oldPrice: "330.00 جنيه", image: "https://ashiae-bucket.s3.eu-west-3.amazonaws.com/products/6521-ex-0.jpg", category: "سمن وزيوت", price: 315 },
+                { id: 25, name: "علبة ماجى شريط قلب احمر", newPrice: "39.00 جنيه", oldPrice: "48.00 جنيه", image: "https://gomla-eg.com/image/cache/catalog/products/655.png-550x550w.png.webp", category: "ماركت", price: 39 },
+                { id: 26, name: "2 علبة صلصة صفيح دهشة", newPrice: "50.00 جنيه", oldPrice: "70.00 جنيه", image: "https://images.freshop.com/00024000013723/336ed2e97ca1a8ff47d459c3a1b062c4_large.png", category: "ماركت", price: 50 },
+                { id: 27, name: "2 علبة صلصة برطمان دهشة", newPrice: "35.00 جنيه", oldPrice: "40.00 جنيه", image: "https://www2.0zz0.com/2025/10/10/02/974509974.jpg", category: "ماركت", price: 35 },
+                { id: 28, name: "زيت هنادى 2.5 لتر", newPrice: "150.00 جنيه", oldPrice: "160.00 جنيه", image: "https://i.pinimg.com/236x/a6/fd/44/a6fd4456e37323d17a042f4d231fb4e1.jpg?nii=t", category: "سمن وزيوت", price: 150 },
+                { id: 29, name: "كيلو جبنة ثلاجة", newPrice: "120.00 جنيه/كجم", oldPrice: "140.00 جنيه/كجم", image: "https://i.pinimg.com/736x/73/6f/8f/736f8fb118ca449d576f26b3a319da79.jpg", category: "ألبان وبيض", price: 120 },
+                { id: 30, name: "كيلو جبنة براملى سادة-مزبدة-فلفل", newPrice: "160.00 جنيه/كجم", oldPrice: "180.00 جنيه/كجم", image: "https://avatars.dzeninfra.ru/get-zen_doc/3901320/pub_6209e776279dc141916f0754_6209eb7cf978a974ec4a23c2/scale_1200", category: "ألبان وبيض", price: 160 },
+                { id: 31, name: "كيلو حلاوة سايبة ممتازة", newPrice: "120.00 جنيه/كجم", oldPrice: "140.00 جنيه/كجم", image: "https://e498h76z5mp.exactdn.com/wp-content/uploads/2020/11/sesame-halva-scaled.jpg", category: "عطارة وعلافة", price: 120 },
+                { id: 32, name: "3 علبة تونة", newPrice: "75.00 جنيه", oldPrice: "90.00 جنيه", image: "https://m.media-amazon.com/images/I/81OI18KZr+L._AC_UL1200_QL65_.jpg", category: "ماركت", price: 75 },
+                { id: 33, name: "باكت ارز 10كجم الخير والبركة", newPrice: "245.00 جنيه", oldPrice: "260.00 جنيه", image: "https://mir-s3-cdn-cf.behance.net/project_modules/hd/24432229385577.55f071518fbd7.jpg", category: "عطارة وعلافة", price: 245 },
+                { id: 34, name: "2 ارز الخير والبركة", newPrice: "52.00 جنيه", oldPrice: "60.00 جنيه", image: "https://www2.0zz0.com/2025/10/10/02/196820438.jpg", category: "عطارة وعلافة", price: 52 },
+                { id: 35, name: "كيلو كاتشب حار-بارد", newPrice: "40.00 جنيه", oldPrice: "50.00 جنيه", image: "https://faragalla.com/wp-content/uploads/2019/09/DSC_1883.jpg", category: "عطارة وعلافة", price: 40 },
+                { id: 36, name: "2 زيت سهر لتر", newPrice: "130.00 جنيه", oldPrice: "140.00 جنيه", image: "https://m.media-amazon.com/images/I/61JJAIPAjnL.jpg", category: "سمن وزيوت", price: 130 },
+                { id: 37, name: "2 زيت سهر 700 جرام", newPrice: "95.00 جنيه", oldPrice: "110.00 جنيه", image: "https://www2.0zz0.com/2025/10/10/02/423777303.jpg", category: "سمن وزيوت", price: 95 },
+                { id: 38, name: "زيت قلية لتر صافى", newPrice: "75.00 جنيه", oldPrice: "80.00 جنيه", image: "https://m.media-amazon.com/images/I/61JJAIPAjnL.jpg", category: "سمن وزيوت", price: 75 },
+                { id: 39, name: "زيت قلية 700جرام", newPrice: "55.00 جنيه", oldPrice: "60.00 جنيه", image: "https://www2.0zz0.com/2025/09/26/02/438357989.jpg", category: "سمن وزيوت", price: 55 }
+            ];
+
+            // Initialize products
+            products = [...allProducts];
+            
+            // Initialize functions
+            function initSimpleSlider() {
+                const sliderData = [
+                    { title: 'طبق بيض ابيض', description: 'أجود أنواع البيض بأسعار مميزة', image: 'https://cdn.metro-cc.ru/ru/ru_pim_195676001001_01.png', oldPrice: '170.00 جنيه', newPrice: '159.00 جنيه', badge: 'خصم 6%' },
+                    { title: 'كيلو ارز وسط', description: 'أرز وسط عالي الجودة', image: 'https://yuz.uz/file/news/79cb22d40fd319ba06554c86a515c4c9.jpg', oldPrice: '28.00 جنيه/كجم', newPrice: '23.00 جنيه/كجم', badge: 'خصم 18%' },
+                    { title: '2 زيت سندباد', description: 'زيت سندباد الأصلي بأسعار تنافسية', image: 'https://lana.gov.ly/images/src/215410.jpg', oldPrice: '130.00 جنيه', newPrice: '105.00 جنيه', badge: 'خصم 19%' }
+                ];
+                
+                function renderSlider() {
+                    simpleSlider.innerHTML = '';
+                    sliderIndicators.innerHTML = '';
+                    
+                    sliderData.forEach((slide, index) => {
+                        const slideDiv = document.createElement('div');
+                        slideDiv.className = `slide ${index === 0 ? 'active' : ''}`;
+                        slideDiv.innerHTML = `
+                            <div class="slide-content">
+                                <div class="slide-image">
+                                    <img src="${slide.image}" alt="${slide.title}">
+                                    <div class="slide-badge">${slide.badge}</div>
+                                </div>
+                                <div class="slide-info">
+                                    <h2 class="slide-title">${slide.title}</h2>
+                                    <p class="slide-description">${slide.description}</p>
+                                    <div class="slide-price">
+                                        <span class="slide-new-price">${slide.newPrice}</span>
+                                        <span class="slide-old-price">${slide.oldPrice}</span>
+                                    </div>
+                                    <button class="slide-cta">اطلب الآن</button>
+                                </div>
+                            </div>
+                        `;
+                        simpleSlider.appendChild(slideDiv);
+                        
+                        const indicator = document.createElement('div');
+                        indicator.className = `indicator ${index === 0 ? 'active' : ''}`;
+                        indicator.addEventListener('click', () => {
+                            showSlide(index);
+                        });
+                        sliderIndicators.appendChild(indicator);
+                    });
+                }
+                
+                function showSlide(index) {
+                    const slides = document.querySelectorAll('.slide');
+                    const indicators = document.querySelectorAll('.indicator');
+                    
+                    slides.forEach(slide => slide.classList.remove('active'));
+                    indicators.forEach(indicator => indicator.classList.remove('active'));
+                    
+                    slides[index].classList.add('active');
+                    indicators[index].classList.add('active');
+                    
+                    currentSlide = index;
+                }
+                
+                function nextSlide() {
+                    currentSlide = (currentSlide + 1) % sliderData.length;
+                    showSlide(currentSlide);
+                }
+                
+                function prevSlide() {
+                    currentSlide = (currentSlide - 1 + sliderData.length) % sliderData.length;
+                    showSlide(currentSlide);
+                }
+                
+                renderSlider();
+                setInterval(nextSlide, 5000);
+                
+                prevSlideBtn.addEventListener('click', prevSlide);
+                nextSlideBtn.addEventListener('click', nextSlide);
+            }
+            
+            function initProductList() {
+                let filteredProducts = [...products];
+                let categories = ['الكل'];
+                
+                // Extract unique categories
+                products.forEach(product => {
+                    if (!categories.includes(product.category)) {
+                        categories.push(product.category);
+                    }
+                });
+                
+                // Render category filter buttons
+                function renderCategoryFilter() {
+                    categoryFilter.innerHTML = '';
+                    categories.forEach(category => {
+                        const button = document.createElement('button');
+                        button.className = 'filter-btn';
+                        button.textContent = category;
+                        if (category === 'الكل') {
+                            button.classList.add('active');
+                        }
+                        button.addEventListener('click', () => {
+                            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                            button.classList.add('active');
+                            
+                            if (category === 'الكل') {
+                                filteredProducts = [...products];
+                            } else {
+                                filteredProducts = products.filter(product => product.category === category);
+                            }
+                            renderProducts();
+                        });
+                        categoryFilter.appendChild(button);
+                    });
+                }
+                
+                // Render products
+                function renderProducts() {
+                    productList.innerHTML = '';
+                    filteredProducts.forEach(product => {
+                        const productCard = document.createElement('div');
+                        productCard.className = 'product-card';
+                        productCard.innerHTML = `
+                            <img src="${product.image}" alt="${product.name}" class="product-image">
+                            <div class="product-info">
+                                <h3>${product.name}</h3>
+                                <div class="price">
+                                    ${product.oldPrice ? `<span class="old-price">${product.oldPrice}</span>` : ''}
+                                    <span class="new-price">${product.newPrice}</span>
+                                </div>
+                                <button class="add-to-cart-btn" data-id="${product.id}">أضف للسلة</button>
+                            </div>
+                        `;
+                        productList.appendChild(productCard);
+                    });
+                    
+                    // Add event listeners to "Add to Cart" buttons
+                    document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+                        button.addEventListener('click', (e) => {
+                            const productId = parseInt(e.target.getAttribute('data-id'));
+                            addToCart(productId);
+                        });
+                    });
+                }
+                
+                renderCategoryFilter();
+                renderProducts();
+            }
+            
+            function initCategoryFilter() {
+                // This is handled in initProductList
+            }
+            
+            function initSearch() {
+                searchInput.addEventListener('input', (e) => {
+                    const searchTerm = e.target.value.toLowerCase().trim();
+                    
+                    if (searchTerm) {
+                        searchResultsContainer.classList.add('active');
+                        hideOnSearchElements.forEach(element => { element.style.display = 'none'; });
+                        
+                        const searchResults = products.filter(product => 
+                            product.name.toLowerCase().includes(searchTerm) ||
+                            product.category.toLowerCase().includes(searchTerm)
+                        );
+                        
+                        renderSearchResults(searchResults);
+                    } else {
+                        searchResultsContainer.classList.remove('active');
+                        hideOnSearchElements.forEach(element => { element.style.display = ''; });
+                    }
+                });
+                
+                clearSearchBtn.addEventListener('click', () => {
+                    searchInput.value = '';
+                    searchResultsContainer.classList.remove('active');
+                    hideOnSearchElements.forEach(element => { element.style.display = ''; });
+                });
+                
+                function renderSearchResults(results) {
+                    searchResultsList.innerHTML = '';
+                    
+                    if (results.length === 0) {
+                        searchResultsList.innerHTML = '<div class="no-results">لم يتم العثور على نتائج</div>';
+                        return;
+                    }
+                    
+                    results.forEach(product => {
+                        const productCard = document.createElement('div');
+                        productCard.className = 'product-card';
+                        productCard.innerHTML = `
+                            <img src="${product.image}" alt="${product.name}" class="product-image">
+                            <div class="product-info">
+                                <h3>${product.name}</h3>
+                                <div class="price">
+                                    ${product.oldPrice ? `<span class="old-price">${product.oldPrice}</span>` : ''}
+                                    <span class="new-price">${product.newPrice}</span>
+                                </div>
+                                <button class="add-to-cart-btn" data-id="${product.id}">أضف للسلة</button>
+                            </div>
+                        `;
+                        searchResultsList.appendChild(productCard);
+                    });
+                    
+                    // Add event listeners to "Add to Cart" buttons in search results
+                    document.querySelectorAll('#searchResultsList .add-to-cart-btn').forEach(button => {
+                        button.addEventListener('click', (e) => {
+                            const productId = parseInt(e.target.getAttribute('data-id'));
+                            addToCart(productId);
+                        });
+                    });
+                }
+            }
+            
+            // Cart functions
             function loadCart() {
-                const savedCart = localStorage.getItem('tabarakCart');
+                const savedCart = localStorage.getItem('tabarekCart');
                 if (savedCart) {
                     cart = JSON.parse(savedCart);
                     updateCartUI();
                 }
             }
             
-            // Save cart to localStorage
             function saveCart() {
-                localStorage.setItem('tabarakCart', JSON.stringify(cart));
+                localStorage.setItem('tabarekCart', JSON.stringify(cart));
             }
             
-            // Add product to cart
-            function addToCart(product) {
-                const existingItem = cart.find(item => item.name === product.name);
-                
-                if (existingItem) {
-                    existingItem.quantity++;
-                } else {
-                    cart.push({
-                        ...product,
-                        quantity: 1
-                    });
+            function addToCart(productId) {
+                const product = products.find(p => p.id === productId);
+                if (product) {
+                    const existingItem = cart.find(item => item.id === productId);
+                    
+                    if (existingItem) {
+                        existingItem.quantity++;
+                    } else {
+                        cart.push({ ...product, quantity: 1 });
+                    }
+                    
+                    saveCart();
+                    updateCartUI();
+                    
+                    // Show notification
+                    showNotification('تمت إضافة المنتج إلى السلة');
                 }
-                
-                saveCart();
-                updateCartUI();
-                
-                // Show cart sidebar
-                cartSidebar.classList.add('active');
             }
             
-            // Update cart UI
             function updateCartUI() {
-                // Clear cart items
                 cartItems.innerHTML = '';
-                
                 let total = 0;
                 let itemCount = 0;
                 
-                // Add cart items
                 cart.forEach(item => {
-                    const itemTotal = item.price * item.quantity;
-                    total += itemTotal;
-                    itemCount += item.quantity;
-                    
                     const cartItem = document.createElement('div');
                     cartItem.className = 'cart-item';
                     cartItem.innerHTML = `
                         <img src="${item.image}" alt="${item.name}">
                         <div class="cart-item-info">
                             <div class="cart-item-name">${item.name}</div>
-                            <div class="cart-item-price">${item.price} جنيه</div>
+                            <div class="cart-item-price">${item.newPrice}</div>
                         </div>
                         <div class="quantity-controls">
-                            <button class="quantity-btn decrease-quantity" data-name="${item.name}">-</button>
+                            <button class="quantity-btn decrease-quantity" data-id="${item.id}">-</button>
                             <span>${item.quantity}</span>
-                            <button class="quantity-btn increase-quantity" data-name="${item.name}">+</button>
+                            <button class="quantity-btn increase-quantity" data-id="${item.id}">+</button>
                         </div>
                     `;
-                    
                     cartItems.appendChild(cartItem);
+                    
+                    total += item.price * item.quantity;
+                    itemCount += item.quantity;
                 });
                 
-                // Update cart count and total
                 cartCount.textContent = itemCount;
-                cartTotal.textContent = `${total.toFixed(2)} جنيه`;
                 
-                // Calculate final total with delivery fee
-                const deliveryFee = 10.00;
-                const finalTotalAmount = total + deliveryFee;
-                finalTotal.textContent = `${finalTotalAmount.toFixed(2)} جنيه`;
+                const delivery = 10.00;
+                const final = total + delivery;
+                
+                cartTotal.textContent = `${total.toFixed(2)} جنيه`;
+                deliveryFeeElement.textContent = `${delivery.toFixed(2)} جنيه`;
+                finalTotalElement.textContent = `${final.toFixed(2)} جنيه`;
                 
                 // Add event listeners to quantity buttons
-                document.querySelectorAll('.decrease-quantity').forEach(btn => {
-                    btn.addEventListener('click', function() {
-                        const name = this.dataset.name;
-                        const item = cart.find(item => item.name === name);
-                        
-                        if (item) {
-                            item.quantity--;
-                            
-                            if (item.quantity <= 0) {
-                                cart = cart.filter(item => item.name !== name);
-                            }
-                            
-                            saveCart();
-                            updateCartUI();
-                        }
+                document.querySelectorAll('.decrease-quantity').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const productId = parseInt(e.target.getAttribute('data-id'));
+                        updateQuantity(productId, -1);
                     });
                 });
                 
-                document.querySelectorAll('.increase-quantity').forEach(btn => {
-                    btn.addEventListener('click', function() {
-                        const name = this.dataset.name;
-                        const item = cart.find(item => item.name === name);
-                        
-                        if (item) {
-                            item.quantity++;
-                            saveCart();
-                            updateCartUI();
-                        }
+                document.querySelectorAll('.increase-quantity').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const productId = parseInt(e.target.getAttribute('data-id'));
+                        updateQuantity(productId, 1);
                     });
                 });
             }
             
-            // Get user location
+            function updateQuantity(productId, change) {
+                const item = cart.find(item => item.id === productId);
+                if (item) {
+                    item.quantity += change;
+                    
+                    if (item.quantity <= 0) {
+                        cart = cart.filter(item => item.id !== productId);
+                    }
+                    
+                    saveCart();
+                    updateCartUI();
+                }
+            }
+            
+            function showNotification(message) {
+                // Create notification element
+                const notification = document.createElement('div');
+                notification.className = 'notification';
+                notification.textContent = message;
+                notification.style.cssText = `
+                    position: fixed;
+                    bottom: 100px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background-color: #4CAF50;
+                    color: white;
+                    padding: 10px 20px;
+                    border-radius: 5px;
+                    z-index: 1000;
+                    font-weight: bold;
+                `;
+                
+                document.body.appendChild(notification);
+                
+                // Remove notification after 3 seconds
+                setTimeout(() => {
+                    notification.remove();
+                }, 3000);
+            }
+            
             function getUserLocation() {
                 if (navigator.geolocation) {
                     locationStatus.textContent = 'جاري تحديد موقعك...';
                     locationStatus.className = 'location-status';
                     
                     navigator.geolocation.getCurrentPosition(
-                        position => {
+                        (position) => {
                             const { latitude, longitude } = position.coords;
-                            locationInput.value = `${latitude}, ${longitude}`;
+                            locationInput.value = `${latitude.toFixed(6)}, ${longitude.toFixed(6)}`;
                             locationStatus.textContent = 'تم تحديد موقعك بنجاح';
                             locationStatus.className = 'location-status success';
                         },
-                        error => {
-                            locationStatus.textContent = 'فشل في تحديد موقعك: ' + error.message;
+                        (error) => {
+                            locationStatus.textContent = 'فشل في تحديد موقعك. يرجى إدخال الموقع يدوياً.';
                             locationStatus.className = 'location-status error';
                         }
                     );
                 } else {
-                    locationStatus.textContent = 'المتصفحح لا يدعم تحديد الموقع';
+                    locationStatus.textContent = 'المتصفح الخاص بك لا يدعم تحديد الموقع.';
                     locationStatus.className = 'location-status error';
                 }
             }
             
-            // Submit order - send to multiple WhatsApp numbers
             function submitOrder(e) {
                 e.preventDefault();
                 
+                // Get form data
                 const formData = new FormData(orderForm);
                 const orderData = {
                     customer: {
@@ -2233,8 +1741,8 @@
                     },
                     items: cart,
                     total: cartTotal.textContent,
-                    deliveryFee: '10.00 جنيه',
-                    finalTotal: finalTotal.textContent
+                    deliveryFee: deliveryFeeElement.textContent,
+                    finalTotal: finalTotalElement.textContent
                 };
                 
                 // Create WhatsApp message with order details
@@ -2282,6 +1790,67 @@
                 orderForm.reset();
             }
             
+            // Image Modal
+            const modal = document.getElementById('image-modal');
+            const modalImg = document.getElementById('modal-img');
+            const caption = document.getElementById('caption');
+            const closeModal = document.querySelector('.close-modal');
+            
+            // Add click event to all product images
+            document.addEventListener('click', function(e) {
+                if (e.target.tagName === 'IMG' && e.target.closest('.product-card, .slide-image, .offer-card-image')) {
+                    modal.style.display = 'block';
+                    modalImg.src = e.target.src;
+                    caption.textContent = e.target.alt;
+                }
+            });
+            
+            closeModal.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+            
+            // Close modal when clicking outside of it
+            window.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+            
+            // Initialize offers
+            function initOffers() {
+                const offersData = [
+                    { title: 'طبق بيض ابيض', image: 'https://cdn.metro-cc.ru/ru/ru_pim_195676001001_01.png', oldPrice: '170.00 جنيه', newPrice: '159.00 جنيه', badge: 'خصم 6%' },
+                    { title: 'كيلو ارز وسط', image: 'https://yuz.uz/file/news/79cb22d40fd319ba06554c86a515c4c9.jpg', oldPrice: '28.00 جنيه/كجم', newPrice: '23.00 جنيه/كجم', badge: 'خصم 18%' },
+                    { title: '2 زيت سندباد', image: 'https://lana.gov.ly/images/src/215410.jpg', oldPrice: '130.00 جنيه', newPrice: '105.00 جنيه', badge: 'خصم 19%' },
+                    { title: '3 علبة تونة', image: 'https://m.media-amazon.com/images/I/81OI18KZr+L._AC_UL1200_QL65_.jpg', oldPrice: '90.00 جنيه', newPrice: '75.00 جنيه', badge: 'خصم 17%' }
+                ];
+                
+                function renderOffers() {
+                    offersGrid.innerHTML = '';
+                    offersData.forEach(offer => {
+                        const offerCard = document.createElement('div');
+                        offerCard.className = 'offer-card';
+                        offerCard.innerHTML = `
+                            <div class="offer-card-image">
+                                <img src="${offer.image}" alt="${offer.title}">
+                                <div class="offer-card-badge">${offer.badge}</div>
+                            </div>
+                            <div class="offer-card-content">
+                                <h3 class="offer-card-title">${offer.title}</h3>
+                                <div class="offer-card-price">
+                                    <span class="offer-card-old-price">${offer.oldPrice}</span>
+                                    <span class="offer-card-new-price">${offer.newPrice}</span>
+                                </div>
+                                <button class="offer-card-btn">اطلب الآن</button>
+                            </div>
+                        `;
+                        offersGrid.appendChild(offerCard);
+                    });
+                }
+                
+                renderOffers();
+            }
+            
             // Event listeners
             cartIcon.addEventListener('click', () => {
                 cartSidebar.classList.add('active');
@@ -2312,41 +1881,12 @@
             
             orderForm.addEventListener('submit', submitOrder);
             
-            // Image Modal
-            const modal = document.getElementById('image-modal');
-            const modalImg = document.getElementById('modal-img');
-            const caption = document.getElementById('caption');
-            const closeModal = document.querySelector('.close-modal');
-            
-            // Add click event to all product images
-            document.addEventListener('click', function(e) {
-                if (e.target.tagName === 'IMG' && e.target.closest('.product-card, .slide-image, .offer-card-image')) {
-                    modal.style.display = 'block';
-                    modalImg.src = e.target.src;
-                    caption.textContent = e.target.alt;
-                }
-            });
-            
-            closeModal.addEventListener('click', function() {
-                modal.style.display = 'none';
-            });
-            
-            // Close modal when clicking outside of it
-            window.addEventListener('click', function(e) {
-                if (e.target === modal) {
-                    modal.style.display = 'none';
-                }
-            });
-            
-            // Slider controls
-            prevSlideBtn.addEventListener('click', prevSlide);
-            nextSlideBtn.addEventListener('click', nextSlide);
-            
             // Initialize everything
             initSimpleSlider();
             initProductList();
             initCategoryFilter();
             initSearch();
+            initOffers();
             loadCart();
         });
     </script>
