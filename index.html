@@ -841,9 +841,9 @@
         <div class="modal-content">
              <span class="close-modal dark" id="close-success-modal">&times;</span>
              <h2>تم تجهيز طلبك!</h2>
-             <p>الرجاء الضغط على كل زر لإرسال الطلب إلى فروعنا عبر واتساب.</p>
+             <p>سيتم إرسال طلبك إلى جميع فروعنا عبر واتساب.</p>
              <div class="whatsapp-links" id="whatsapp-links">
-                <!-- Links will be injected by JS -->
+                <!-- Link will be injected by JS -->
              </div>
         </div>
     </div>
@@ -1238,21 +1238,15 @@
 
                 const encodedMessage = encodeURIComponent(message);
                 const whatsappNumbers = [
-                    { name: 'فرع 1', number: '201030566078' },
-                    { name: 'فرع 2', number: '201118091234' },
-                    { name: 'فرع 3', number: '201095348285' }
+                    { number: '201030566078' },
+                    { number: '201118091234' },
+                    { number: '201095348285' }
                 ];
                 
-                const whatsappLinksContainer = document.getElementById('whatsapp-links');
-                whatsappLinksContainer.innerHTML = ''; // Clear previous links
-
+                // Send to all WhatsApp numbers at once
                 whatsappNumbers.forEach(wa => {
-                    const link = document.createElement('a');
-                    link.href = `https://wa.me/${wa.number}?text=${encodedMessage}`;
-                    link.target = '_blank';
-                    link.rel = 'noopener noreferrer';
-                    link.innerHTML = `<i class="fab fa-whatsapp"></i> إرسال إلى ${wa.name}`;
-                    whatsappLinksContainer.appendChild(link);
+                    const whatsappUrl = `https://wa.me/${wa.number}?text=${encodedMessage}`;
+                    window.open(whatsappUrl, '_blank');
                 });
 
                 closeModal(checkoutModal);
