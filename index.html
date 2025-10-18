@@ -26,7 +26,7 @@
             background-color: var(--background-color);
             margin: 0;
             padding: 0;
-            background-image: url('https://images.unsplash.com/photo-15832582D2688-d0213dc5a3a8?w=1200&q=80');
+            background-image: url('https://images.unsplash.com/photo-1583258292688-d0213dc5a3a8?w=1200&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -841,8 +841,10 @@
         <div class="modal-content">
              <span class="close-modal dark" id="close-success-modal">&times;</span>
              <h2>تم تجهيز طلبك!</h2>
-             <p>لقد تم فتح نوافذ جديدة لإرسال طلبك عبر الواتساب. إذا لم تظهر، يرجى التأكد من تعطيل مانع النوافذ المنبثقة.</p>
-             <p style="margin-top:20px;"><i class="fab fa-whatsapp" style="color: #25D366; font-size: 3em;"></i></p>
+             <p>الرجاء الضغط على كل زر لإرسال الطلب إلى فروعنا عبر واتساب.</p>
+             <div class="whatsapp-links" id="whatsapp-links">
+                <!-- Links will be injected by JS -->
+             </div>
         </div>
     </div>
 
@@ -1138,7 +1140,16 @@
                 openModal(checkoutModal);
             });
             closeCheckoutModalBtn.addEventListener('click', () => closeModal(checkoutModal));
-            closeSuccessModalBtn.addEventListener('click', () => closeModal(orderSuccessModal));
+            closeSuccessModalBtn.addEventListener('click', () => {
+                closeModal(orderSuccessModal);
+                // Clear cart and form for next order after closing the success message
+                cart = [];
+                saveCart();
+                updateCartView();
+                checkoutForm.reset();
+                userLocation = null;
+                locationStatusEl.textContent = '';
+            });
 
             window.onclick = (event) => {
                 if (event.target.classList.contains('modal')) {
@@ -1227,26 +1238,25 @@
 
                 const encodedMessage = encodeURIComponent(message);
                 const whatsappNumbers = [
-                    '201030566078',
-                    '201118091234',
-                    '201095348285'
+                    { name: 'فرع 1', number: '201030566078' },
+                    { name: 'فرع 2', number: '201118091234' },
+                    { name: 'فرع 3', number: '201095348285' }
                 ];
                 
-                // Send the order to all WhatsApp numbers
-                whatsappNumbers.forEach(number => {
-                    window.open(`https://wa.me/${number}?text=${encodedMessage}`, '_blank');
+                const whatsappLinksContainer = document.getElementById('whatsapp-links');
+                whatsappLinksContainer.innerHTML = ''; // Clear previous links
+
+                whatsappNumbers.forEach(wa => {
+                    const link = document.createElement('a');
+                    link.href = `https://wa.me/${wa.number}?text=${encodedMessage}`;
+                    link.target = '_blank';
+                    link.rel = 'noopener noreferrer';
+                    link.innerHTML = `<i class="fab fa-whatsapp"></i> إرسال إلى ${wa.name}`;
+                    whatsappLinksContainer.appendChild(link);
                 });
 
                 closeModal(checkoutModal);
                 openModal(orderSuccessModal);
-                
-                // Clear cart and form for next order
-                cart = [];
-                saveCart();
-                updateCartView();
-                checkoutForm.reset();
-                userLocation = null;
-                locationStatusEl.textContent = '';
             });
 
 
