@@ -1,4 +1,3 @@
-<!-- اسم الملف: index.html -->
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -753,10 +752,10 @@
 
         /* Responsive Styles */
         @media (max-width: 1200px) {
-            .carousel-card { width: 33.33%; }
+            .carousel-card { min-width: calc(33.33% - 20px); }
         }
         @media (max-width: 992px) {
-             .carousel-card { width: 50%; }
+             .carousel-card { min-width: calc(50% - 20px); }
         }
         @media (max-width: 768px) {
             .carousel-container { padding: 0 45px; }
@@ -764,7 +763,9 @@
             .location-details { text-align: center; margin-bottom: 20px; }
             .controls-container { top: 40px; } /* Adjust sticky top */
             .modal-content { width: 90%; }
-            .carousel-card { width: 100%; }
+            .carousel-card { min-width: calc(100% - 20px); }
+            header h1 { font-size: 2em; }
+            .showcase-header h2 { font-size: 1.8em; }
         }
         @media (max-width: 576px) {
             .carousel-btn { width: 35px; height: 35px; font-size: 20px; }
@@ -775,6 +776,10 @@
             body { padding-top: 36px; }
             .controls-container { top: 35px; }
             .cart-fab { bottom: 20px; left: 20px; width: 55px; height: 55px; }
+            header h1 { font-size: 1.8em; }
+            .showcase-header h2 { font-size: 1.5em; }
+            .contact-info { font-size: 0.9em; }
+            .logo { width: 50px; height: 50px; }
         }
     </style>
 <script type="importmap">
@@ -803,6 +808,7 @@
             <span>عروضنا الكبرى كل يوم جمعة من كل أسبوع</span>
             <span>عروضنا الكبرى كل يوم جمعة من كل أسبوع</span>
             <span>عروضنا الكبرى كل يوم جمعة من كل أسبوع</span>
+            <span>عروضنا الكبرى كل يوم جمعة من كل أسبوع</span>
         </div>
     </div>
     <div class="container">
@@ -811,7 +817,7 @@
             <div class="contact-info">
                 <span><i class="fas fa-map-marker-alt"></i>حدائق أكتوبر 390 فدان امام الملعب سنتر الفردوس</span>
                 <a href="tel:+2010305660XX"><i class="fas fa-phone-alt"></i>+2010305660XX (دليفري)</a>
-                <a href="https://wa.me/2010305660OXX" target="_blank"><i class="fab fa-whatsapp"></i>+2010305660XX (واتساب)</a>
+                <a href="https://chat.whatsapp.com/JoJySSxhWThGouxrrvSJSV?mode=wwc" target="_blank"><i class="fab fa-whatsapp"></i>انضم لمجموعة الواتساب</a>
             </div>
         </header>
         <div class="secondary-announcement-bar">أفضل العروض المتاحة</div>
@@ -957,13 +963,14 @@
         <div class="modal-content">
              <span class="close-modal dark" id="close-success-modal">&times;</span>
              <h2>تم تجهيز طلبك!</h2>
-             <p>سيتم إرسال طلبك إلى جروب واتساب الخاص بنا.</p>
+             <p>سيتم إرسال طلبك إلى مجموعة الواتساب الخاصة بنا.</p>
              <div class="whatsapp-links" id="whatsapp-links">
-                <!-- Link will be injected by JS -->
+                <a href="https://chat.whatsapp.com/JoJySSxhWThGouxrrvSJSV?mode=wwc" target="_blank">
+                    <i class="fab fa-whatsapp"></i> انضم لمجموعة الواتساب
+                </a>
              </div>
         </div>
     </div>
-
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -1154,420 +1161,121 @@
             let products = [
                 {name: "طبق بيض ابيض", newPrice: "159.00 جنيه", oldPrice: "170.00 جنيه", image: "https://cdn.metro-cc.ru/ru/ru_pim_195676001001_01.png", category: "dairy-eggs"},
                 {name: "طبق بيض احمر", newPrice: "165.00 جنيه", oldPrice: "175.00 جنيه", image: "https://avatars.mds.yandex.net/get-mpic/4614113/img_id4420346577537823307.jpeg/orig", category: "dairy-eggs"},
-                {name: "كيلو ارز وسط", newPrice: "23.00 جنيه/كجم", oldPrice: "28.00 جنيه/كجم", image: "https://yuz.uz/file/news/79cb22d40fd319ba06554c86a515c4c9.jpg", category: "Herbalist-fodder"},
-                {name: "كيلو ارز عريض", newPrice: "28.00 جنيه/كجم", oldPrice: "32.00 جنيه/كجم", image: "https://avatars.mds.yandex.net/get-mpic/4547325/img_id7962333466218946176.jpeg/orig", category: "Herbalist-fodder"},
-                {name: "شكارة ارز 25 كجم وسط", newPrice: "570.00 جنيه", oldPrice: "620.00 جنيه", image: "https://mir-s3-cdn-cf.behance.net/project_modules/hd/24432229385577.55f071518fbd7.jpg", category: "Herbalist-fodder"},
-                {name: "شكارة ارز 25 كيلو عريض", newPrice: "675.00 جنيه", oldPrice: "740.00 جنيه", image: "https://mir-s3-cdn-cf.behance.net/project_modules/hd/24432229385577.55f071518fbd7.jpg", category: "Herbalist-fodder"},
-                {name: "كيلو مكرونة انواع ماعدا الاسباجيتى", newPrice: "20.00 جنيه", oldPrice: "24.00 جنيه", image: "https://cdn-uz.kursiv.media/wp-content/uploads/2024/08/scale_1200-16.jpg", category: "Herbalist-fodder"},
-                {name: "2 كيلو سكر وزن 1000جم صافى", newPrice: "58.00 جنيه", oldPrice: "70.00 جنيه", image: "https://www2.0zz0.com/2025/10/10/02/865311217.png", category: "Herbalist-fodder"},
-                {name: "شكارة مكرونة اى نوع ماعدا الاسباجيتى ", newPrice: "195.00 جنيه", oldPrice: "220.00 جنيه", image: "https://cdn-uz.kursiv.media/wp-content/uploads/2024/08/scale_1200-16.jpg", category: "Herbalist-fodder"},
-                {name: "2 زيت سندباد", newPrice: "105.00 جنيه", oldPrice: "130.00 جنيه", image: "https://lana.gov.ly/images/src/215410.jpg", category: "Butter-oils"},
-                {name: "كيلو سمن سايب روابى-جنه-كريستال", newPrice: "100.00 جنيه", oldPrice: "120.00 جنيه", image: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/201911/ghee.png", category: "Butter-oils"},             
-                {name: "2 كيلو دقيق سايب", newPrice: "35.00 جنيه", oldPrice: "40.00 جنيه", image: "https://avatars.mds.yandex.net/get-mpic/5284145/img_id1750820196963638749.jpeg/orig", category: "Herbalist-fodder"},             
-                {name: "كيلو عسل اسمر", newPrice: "38.00 جنيه", oldPrice: "45.00 جنيه", image: "https://img.diytrade.com/smimg/2935125/49070690-11280215-0/Molasses_sugar_cane/8445.jpg", category: "Herbalist-fodder"},             
-                {name: "كيلو طحينة سايب", newPrice: "120.00 جنيه", oldPrice: "160.00 جنيه", image: "https://img.kompass.com/sys-master-images/h9d/h04/9151179620382/tahini-hss-jpg", category: "Herbalist-fodder"}, 
-                {name: "باكت ملح بونو", newPrice: "35.00 جنيه", oldPrice: "48.00 جنيه", image: "https://www2.0zz0.com/2025/10/10/02/606345585.jpg", category: "Herbalist-fodder"},
-                {name: "3 خل العزة", newPrice: "25.00 جنيه", oldPrice: "30.00 جنيه", image: "https://m.media-amazon.com/images/S/aplus-media/sota/43272024-50ec-492b-ac71-fe8e028d2159.__CR0,0,970,600_PT0_SX970_V1___.jpg", category: "Market"},             
-                {name: "5 كيس مكرونة غالية مشكل", newPrice: "50.00 جنيه", oldPrice: "60.00 جنيه", image: "https://m.media-amazon.com/images/I/618Kej3if1L._AC_UF1000,1000_QL80_.jpg", category: "Market"}, 
-                {name: "كيلو مخلل بوليف", newPrice: "20.00 جنيه", oldPrice: "30.00 جنيه", image: "https://i.ytimg.com/vi/Y2_CtbPh3Es/maxresdefault.jpg", category: "pickles"}, 
-                {name: "5 كيس مكرونة الملكة مشكل", newPrice: "69.00 جنيه", oldPrice: "75.00 جنيه", image: "https://i1.sndcdn.com/artworks-czylEj2FpnwIX9xD-K9X77w-t500x500.jpg", category: "Market"}, 
-                {name: "برجر حلوانى عائلى 25 ق", newPrice: "205.00 جنيه", oldPrice: "220.00 جنيه", image: "https://www2.0zz0.com/2025/09/26/01/864482321.jpg", category: "Meat-frozen-foods"}, 
-                {name: "برجر المراعى عائلى 25 ق", newPrice: "115.00 جنيه", oldPrice: "125.00 جنيه", image: "https://www2.0zz0.com/2025/09/26/01/478227720.jpg", category: "Meat-frozen-foods"}, 
-                {name: "برجر توابل شرقية عائلى 25 ق", newPrice: "125.00 جنيه", oldPrice: "135.00 جنيه", image: "https://www2.0zz0.com/2025/09/26/01/532428282.jpg", category: "Meat-frozen-foods"}, 
-                {name: "كيلو رنجة درجة أولى", newPrice: "115.00 جنيه/كجم", oldPrice: "140.00 جنيه/كجم", image: "https://ychef.files.bbci.co.uk/976x549/p04xs9bl.jpg0", category: "Meat-frozen-foods"}, 
-                {name: "زجاجة زيت حلوة- قلية 5 لتر", newPrice: "315.00 جنيه", oldPrice: "330.00 جنيه", image: "https://ashiae-bucket.s3.eu-west-3.amazonaws.com/products/6521-ex-0.jpg", category: "Butter-oils"}, 
-                {name: "علبة ماجي شريط قلب أحمر", newPrice: "39.00 جنيه", oldPrice: "48.00 جنيه", image: "https://gomla-eg.com/image/cache/catalog/products/655.png-550x550w.png.webp", category: "Market"}, 
-                {name: "2 علبة صلصة صفيح دهشة", newPrice: "50.00 جنيه", oldPrice: "70.00 جنيه", image: "https://images.freshop.com/00024000013723/336ed2e97ca1a8ff47d459c3a1b062c4_large.png", category: "Market"},
-                {name: "2 علبة صلصة برطمان دهشة", newPrice: "35.00 جنيه", oldPrice: "40.00 جنيه", image: "https://www2.0zz0.com/2025/10/10/02/974509974.jpg", category: "Market"},
-                {name: "زيت هنادى 2.5 لتر", newPrice: "150.00 جنيه", oldPrice: "160.00 جنيه", image: "https://i.pinimg.com/236x/a6/fd/44/a6fd4456e37323d17a042f4d231fb4e1.jpg?nii=t", category: "Butter-oils"},
-                {name: "كيلو جبنة ثلاجة", newPrice: "120.00 جنيه/كجم", oldPrice: "140.00 جنيه/كجم", image: "https://i.pinimg.com/736x/73/6f/8f/736f8fb118ca449d576f26b3a319da79.jpg", category: "dairy-eggs"},
-                {name: "كيلو جبنة براملى سادة-مزبدة-فلفل-فلفل", newPrice: "160.00 جنيه/كجم", oldPrice: "180.00 جنيه/كجم", image: "https://avatars.dzeninfra.ru/get-zen_doc/3901320/pub_6209e776279dc141916f0754_6209eb7cf978a974ec4a23c2/scale_1200", category: "dairy-eggs"},
-                {name: "كيلو حلاوة سايبة ممتازة", newPrice: "120.00 جنيه/كجم", oldPrice: "140.00 جنيه/كجم", image: "https://e498h76z5mp.exactdn.com/wp-content/uploads/2020/11/sesame-halva-scaled.jpg", category: "Herbalist-fodder"},
-                {name: "3 علبة تونة", newPrice: "75.00 جنيه", oldPrice: "90.00 جنيه", image: "https://m.media-amazon.com/images/I/81OI18KZr+L._AC_UL1200_QL65_.jpg", category: "Market"}, 
-                {name: "باكت ارز 10كجم الخير والبركة", newPrice: "245.00 جنيه", oldPrice: "260.00 جنيه", image: "https://mir-s3-cdn-cf.behance.net/project_modules/hd/24432229385577.55f071518fbd7.jpg", category: "Herbalist-fodder"}, 
-                {name: "2 ارز الخير والبركة", newPrice: "52.00 جنيه", oldPrice: "60.00 جنيه", image: "https://www2.0zz0.com/2025/10/10/02/196820438.jpg", category: "Herbalist-fodder"}, 
-                {name: "كيلو كاتشب حار-بارد", newPrice: "40.00 جنيه", oldPrice: "50.00 جنيه", image: "https://faragalla.com/wp-content/uploads/2019/09/DSC_1883.jpg", category: "Herbalist-fodder"}, 
-                {name: "2 زيت سهر لتر", newPrice: "130.00 جنيه", oldPrice: "140.00 جنيه", image: "https://m.media-amazon.com/images/I/61JJAIPAjnL.jpg", category: "Butter-oils"},  
-                {name: "2 زيت سهر 700 جرام", newPrice: "95.00 جنيه", oldPrice: "110.00 جنيه", image: "https://www2.0zz0.com/2025/10/10/02/423777303.jpg", category: "Butter-oils"}, 
-                {name: "زيت قلية لتر صافي", newPrice: "75.00 جنيه", oldPrice: "80.00 جنيه", image: "https://m.media-amazon.com/images/I/61JJAIPAjnL.jpg", category: "Butter-oils"},  
-                {name: "زيت قلية 700جرام", newPrice: "55.00 جنيه", oldPrice: "60.00 جنيه", image: "https://www2.0zz0.com/2025/09/26/02/438357989.jpg", category: "Butter-oils"}
+                {name: "كيلو ارز وسط", newPrice: "23.00 جنيه/كجم", oldPrice: "28.00 جنيه/كجم", image: "https://www.albayan.ae/assets/archives/images/2023/08/25/4715792.jpg", category: "grains"},
+                {name: "كيلو ارز عريض", newPrice: "28.00 جنيه/كجم", oldPrice: "32.00 جنيه/كجم", image: "https://avatars.mds.yandex.net/get-mpic/4547325/img_id7962333466218946176.jpeg/orig", category: "grains"},
+                {name: "شكارة ارز 25 كجم", newPrice: "570.00 جنيه", oldPrice: "620.00 جنيه", image: "https://mir-s3-cdn-cf.behance.net/project_modules/hd/24432229385577.55f071518fbd7.jpg", category: "grains"},
+                {name: "شكارة ارز 25 كيلو عريض", newPrice: "675.00 جنيه", oldPrice: "740.00 جنيه", image: "https://mir-s3-cdn-cf.behance.net/project_modules/hd/24432229385577.55f071518fbd7.jpg", category: "grains"},
+                {name: "كيلو مكرونة أنواع ماعدا الإسباجيتي", newPrice: "20.00 جنيه", oldPrice: "24.00 جنيه", image: "https://cdn-uz.kursiv.media/wp-content/uploads/2024/08/scale_1200-16.jpg", category: "grains"},
+                {name: "شكارة مكرونة أي نوع ماعدا الإسباجيتي", newPrice: "195.00 جنيه", oldPrice: "220.00 جنيه", image: "https://cdn-uz.kursiv.media/wp-content/uploads/2024/08/scale_1200-16.jpg", category: "grains"},
+                {name: "5 كيس مكرونة غالية مشكل", newPrice: "50.00 جنيه", oldPrice: "60.00 جنيه", image: "https://m.media-amazon.com/images/I/618Kej3if1L._AC_UF1000,1000_QL80_.jpg", category: "grains"},
+                {name: "5 كيس مكرونة الملكة مشكل", newPrice: "69.00 جنيه", oldPrice: "75.00 جنيه", image: "https://i1.sndcdn.com/artworks-czylEj2FpnwIX9xD-K9X77w-t500x500.jpg", category: "grains"},
+                {name: "2 كيلو سكر وزن 1000جم صافي", newPrice: "58.00 جنيه", oldPrice: "70.00 جنيه", image: "https://www2.0zz0.com/2025/10/10/02/865311217.png", category: "grains"},
+                {name: "2 كيلو دقيق سايب", newPrice: "35.00 جنيه", oldPrice: "40.00 جنيه", image: "https://cdn.nur.kz/images/1200x675/7d9be34e89d9523d.jpeg", category: "grains"},
+                {name: "كيلو سمن سايب", newPrice: "100.00 جنيه", oldPrice: "120.00 جنيه", image: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/201911/ghee.png", category: "dairy-eggs"},
+                {name: "كيلو جبنة ثلاجة", newPrice: "120.00 جنيه", oldPrice: "140.00 جنيه", image: "https://i.pinimg.com/736x/73/6f/8f/736f8fb118ca449d576f26b3a319da79.jpg", category: "dairy-eggs"},
+                {name: "كيلو جبنة براملى", newPrice: "160.00 جنيه", oldPrice: "180.00 جنيه", image: "https://avatars.dzeninfra.ru/get-zen_doc/3901320/pub_6209e776279dc141916f0754_6209eb7cf978a974ec4a23c2/scale_1200", category: "dairy-eggs"},
+                {name: "كيلو طحينة سايب", newPrice: "120.00 جنيه", oldPrice: "160.00 جنيه", image: "https://img.kompass.com/sys-master-images/h9d/h04/9151179620382/tahini-hss-jpg", category: "dairy-eggs"},
+                {name: "كيلو حلاوة سايبة ممتازة", newPrice: "120.00 جنيه", oldPrice: "140.00 جنيه", image: "https://e498h76z5mp.exactdn.com/wp-content/uploads/2020/11/sesame-halva-scaled.jpg", category: "dairy-eggs"},
+                {name: "2 زيت سندباد", newPrice: "105.00 جنيه", oldPrice: "130.00 جنيه", image: "https://lana.gov.ly/images/src/215410.jpg", category: "oils"},
+                {name: "زجاجة زيت حلوة 5 لتر", newPrice: "315.00 جنيه", oldPrice: "330.00 جنيه", image: "https://ashiae-bucket.s3.eu-west-3.amazonaws.com/products/6521-ex-0.jpg", category: "oils"},
+                {name: "زيت هنادي 2.5 لتر", newPrice: "150.00 جنيه", oldPrice: "160.00 جنيه", image: "https://i.pinimg.com/236x/a6/fd/44/a6fd4456e37323d17a042f4d231fb4e1.jpg?nii=t", category: "oils"},
+                {name: "2 زيت سهر لتر", newPrice: "130.00 جنيه", oldPrice: "140.00 جنيه", image: "https://m.media-amazon.com/images/I/61JJAIPAjnL.jpg", category: "oils"},
+                {name: "2 زيت سهر 700 جرام", newPrice: "95.00 جنيه", oldPrice: "110.00 جنيه", image: "https://www2.0zz0.com/2025/10/10/02/423777303.jpg", category: "oils"},
+                {name: "زيت قلية لتر صافي", newPrice: "75.00 جنيه", oldPrice: "80.00 جنيه", image: "https://m.media-amazon.com/images/I/61JJAIPAjnL.jpg", category: "oils"},
+                {name: "زيت قلية 700جرام", newPrice: "55.00 جنيه", oldPrice: "60.00 جنيه", image: "https://www2.0zz0.com/2025/09/26/02/438357989.jpg", category: "oils"},
+                {name: "برجر المراعى عائلى", newPrice: "115.00 جنيه", oldPrice: "125.00 جنيه", image: "https://www2.0zz0.com/2025/09/26/01/478227720.jpg", category: "meat"},
+                {name: "برجر حلواني عائلي 25 ق", newPrice: "205.00 جنيه", oldPrice: "220.00 جنيه", image: "https://www2.0zz0.com/2025/09/26/01/864482321.jpg", category: "meat"},
+                {name: "برجر توابل شرقية عائلي 25 ق", newPrice: "125.00 جنيه", oldPrice: "135.00 جنيه", image: "https://www2.0zz0.com/2025/09/26/01/532428282.jpg", category: "meat"},
+                {name: "كيلو رنجة درجة أولى", newPrice: "115.00 جنيه", oldPrice: "140.00 جنيه", image: "https://ychef.files.bbci.co.uk/976x549/p04xs9bl.jpg0", category: "meat"},
+                {name: "3 علبة تونة", newPrice: "75.00 جنيه", oldPrice: "90.00 جنيه", image: "https://m.media-amazon.com/images/I/81OI18KZr+L._AC_UL1200_QL65_.jpg", category: "meat"},
+                {name: "كيلو عسل اسمر", newPrice: "38.00 جنيه", oldPrice: "45.00 جنيه", image: "https://img.diytrade.com/smimg/2935125/49070690-11280215-0/Molasses_sugar_cane/8445.jpg", category: "other"},
+                {name: "باكت ملح بونو", newPrice: "35.00 جنيه", oldPrice: "48.00 جنيه", image: "https://www2.0zz0.com/2025/10/10/02/606345585.jpg", category: "other"},
+                {name: "3 خل العزة", newPrice: "25.00 جنيه", oldPrice: "30.00 جنيه", image: "https://m.media-amazon.com/images/S/aplus-media/sota/43272024-50ec-492b-ac71-fe8e028d2159.__CR0,0,970,600_PT0_SX970_V1___.jpg", category: "other"},
+                {name: "كيلو مخلل بوليف", newPrice: "20.00 جنيه", oldPrice: "30.00 جنيه", image: "https://i.ytimg.com/vi/Y2_CtbPh3Es/maxresdefault.jpg", category: "other"},
+                {name: "علبة ماجي شريط قلب أحمر", newPrice: "39.00 جنيه", oldPrice: "48.00 جنيه", image: "https://gomla-eg.com/image/cache/catalog/products/655.png-550x550w.png.webp", category: "other"},
+                {name: "2 علبة صلصة صفيح دهشة", newPrice: "50.00 جنيه", oldPrice: "70.00 جنيه", image: "https://images.freshop.com/00024000013723/336ed2e97ca1a8ff47d459c3a1b062c4_large.png", category: "other"},
+                {name: "2 علبة صلصة برطمان دهشة", newPrice: "35.00 جنيه", oldPrice: "40.00 جنيه", image: "https://www2.0zz0.com/2025/10/10/02/974509974.jpg", category: "other"},
+                {name: "باكت أرز 10كجم الخير والبركة", newPrice: "245.00 جنيه", oldPrice: "260.00 جنيه", image: "https://mir-s3-cdn-cf.behance.net/project_modules/hd/24432229385577.55f071518fbd7.jpg", category: "grains"},
+                {name: "2 أرز الخير والبركة", newPrice: "52.00 جنيه", oldPrice: "60.00 جنيه", image: "https://www2.0zz0.com/2025/10/10/02/196820438.jpg", category: "grains"},
+                {name: "كيلو كاتشب حار-بارد", newPrice: "40.00 جنيه", oldPrice: "50.00 جنيه", image: "https://faragalla.com/wp-content/uploads/2019/09/DSC_1883.jpg", category: "other"}
             ];
 
-            const categoryNames = {
-                'all': 'الكل',
-                'Butter-oils': 'سمنتج',
-                'bakery': 'مخبوزات',
-                'dairy-eggs': 'ألبان وبيض',
-                'Market': 'ماركت',
-                'Herbalist-fodder': 'عطارة وعلافة',
-                'Meat-frozen-foods': 'لحوم ومجمدات',
-                'pickles': 'مخللات',
-                'drinks': 'مشروبات'
-            };
+            let cart = [];
+            let filteredProducts = [...products];
+            let activeCategory = 'all';
 
-            // Image Modal Logic
-            const imageModal = document.getElementById("image-modal");
-            const modalImg = document.getElementById("modal-img");
-            const captionText = document.getElementById("caption");
-            const closeImageModalBtn = document.getElementById("close-image-modal");
+            // Categories
+            const categories = [
+                { id: 'all', name: 'الكل' },
+                { id: 'dairy-eggs', name: 'منتجات الألبان والبيض' },
+                { id: 'grains', name: 'الحبوب والمكرونات' },
+                { id: 'oils', name: 'الزيوت والدهون' },
+                { id: 'meat', name: 'اللحوم والأسماك' },
+                { id: 'other', name: 'منتجات أخرى' }
+            ];
 
-            function setupModalEventListeners() {
-                const productImages = productList.querySelectorAll('.product-card img');
-                productImages.forEach(img => {
-                    img.onclick = function() {
-                        imageModal.style.display = "block";
-                        modalImg.src = this.src;
-                        captionText.innerHTML = this.alt;
-                    }
-                });
-            }
-
-            closeImageModalBtn.onclick = () => imageModal.style.display = "none";
-            
-            // --- Shopping Cart Logic ---
-            let cart = JSON.parse(localStorage.getItem('tabarakCart')) || [];
-            let userLocation = null;
-            const cartFab = document.getElementById('cart-fab');
-            const cartBadge = document.getElementById('cart-badge');
-            const cartModal = document.getElementById('cart-modal');
-            const closeCartModalBtn = document.getElementById('close-cart-modal');
-            const checkoutModal = document.getElementById('checkout-modal');
-            const closeCheckoutModalBtn = document.getElementById('close-checkout-modal');
-            const orderSuccessModal = document.getElementById('order-success-modal');
-            const closeSuccessModalBtn = document.getElementById('close-success-modal');
-            const checkoutForm = document.getElementById('checkout-form');
-            const getLocationBtn = document.getElementById('get-location-btn');
-            const locationStatus = document.getElementById('location-status');
-            const clearCartBtn = document.getElementById('clear-cart-btn');
-
-            // Initialize cart
-            updateCartBadge();
-            renderCartItems();
-
-            // Cart Modal Event Listeners
-            cartFab.addEventListener('click', () => {
-                cartModal.style.display = "block";
-                renderCartItems();
-            });
-
-            closeCartModalBtn.onclick = () => cartModal.style.display = "none";
-            closeCheckoutModalBtn.onclick = () => checkoutModal.style.display = "none";
-            closeSuccessModalBtn.onclick = () => orderSuccessModal.style.display = "none";
-
-            // Clear cart button
-            clearCartBtn.addEventListener('click', () => {
-                if (confirm('هل أنت متأكد من أنك تريد تفريغ السلة؟')) {
-                    cart = [];
-                    saveCart();
-                    updateCartBadge();
-                    renderCartItems();
-                }
-            });
-
-            // Close modals when clicking outside
-            window.onclick = function(event) {
-                if (event.target == cartModal) {
-                    cartModal.style.display = "none";
-                }
-                if (event.target == checkoutModal) {
-                    checkoutModal.style.display = "none";
-                }
-                if (event.target == orderSuccessModal) {
-                    orderSuccessModal.style.display = "none";
-                }
-                if (event.target == imageModal) {
-                    imageModal.style.display = "none";
-                }
-            }
-
-            // Add to Cart Function
-            function addToCart(product) {
-                const existingItem = cart.find(item => item.name === product.name);
-                
-                if (existingItem) {
-                    existingItem.quantity += 1;
-                } else {
-                    cart.push({
-                        ...product,
-                        quantity: 1
-                    });
-                }
-                
-                saveCart();
-                updateCartBadge();
-                renderCartItems();
-                
-                // Show success animation
-                const button = document.querySelector(`[data-product="${product.name}"]`);
-                if (button) {
-                    button.classList.add('added');
-                    button.innerHTML = '<i class="fas fa-check"></i> تمت الإضافة';
-                    setTimeout(() => {
-                        button.classList.remove('added');
-                        button.innerHTML = '<i class="fas fa-cart-plus"></i> أضف للسلة';
-                    }, 1500);
-                }
-            }
-
-            // Remove from Cart Function
-            function removeFromCart(productName) {
-                cart = cart.filter(item => item.name !== productName);
-                saveCart();
-                updateCartBadge();
-                renderCartItems();
-            }
-
-            // Update Cart Quantity
-            function updateCartQuantity(productName, change) {
-                const item = cart.find(item => item.name === productName);
-                if (item) {
-                    item.quantity += change;
-                    if (item.quantity <= 0) {
-                        removeFromCart(productName);
-                    } else {
-                        saveCart();
-                        renderCartItems();
-                    }
-                }
-            }
-
-            // Save Cart to LocalStorage
-            function saveCart() {
-                localStorage.setItem('tabarakCart', JSON.stringify(cart));
-            }
-
-            // Update Cart Badge
-            function updateCartBadge() {
-                const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-                cartBadge.textContent = totalItems;
-            }
-
-            // Render Cart Items
-            function renderCartItems() {
-                const cartItemsContainer = document.getElementById('cart-items');
-                const cartTotal = document.getElementById('cart-total');
-                const emptyCartMsg = document.getElementById('empty-cart-msg');
-                const cartSummary = document.getElementById('cart-summary);
-                
-                if (cart.length === 0) {
-                    cartItemsContainer.innerHTML = '';
-                    emptyCartMsg.style.display = 'block';
-                    cartSummary.style.display = 'none';
-                    return;
-                }
-                
-                emptyCartMsg.style.display = 'none';
-                cartSummary.style.display = 'block';
-                
-                let total = 0;
-                cartItemsContainer.innerHTML = '';
-                
-                cart.forEach(item => {
-                    const price = parseFloat(item.newPrice.replace(/[^0-9.]/g, ''));
-                    const itemTotal = price * item.quantity;
-                    total += itemTotal;
-                    
-                    const cartItem = document.createElement('div');
-                    cartItem.className = 'cart-item';
-                    cartItem.innerHTML = `
-                        <img src="${item.image}" alt="${item.name}">
-                        <div class="cart-item-info">
-                            <h4>${item.name}</h4>
-                            <div class="cart-item-controls">
-                                <button onclick="updateCartQuantity('${item.name}', -1)">-</button>
-                                <span>${item.quantity}</span>
-                                <button onclick="updateCartQuantity('${item.name}', 1)">+</button>
-                            </div>
-                        </div>
-                        <div class="cart-item-price">${item.newPrice}</div>
-                        <button class="cart-item-remove" onclick="removeFromCart('${item.name}')">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    `;
-                    cartItemsContainer.appendChild(cartItem);
-                });
-                
-                cartTotal.textContent = `الإجمالي: ${total.toFixed(2)} جنيه`;
-            }
-
-            // Checkout Process
-            document.getElementById('checkout-btn').addEventListener('click', () => {
-                cartModal.style.display = "none";
-                checkoutModal.style.display = "block";
-            });
-
-            // Get User Location
-            getLocationBtn.addEventListener('click', () => {
-                if (navigator.geolocation) {
-                    locationStatus.textContent = 'جاري تحديد موقعك...';
-                    navigator.geolocation.getCurrentPosition(
-                        position => {
-                            userLocation = {
-                                lat: position.coords.latitude,
-                                lng: position.coords.longitude
-                            };
-                            locationStatus.textContent = 'تم تحديد موقعك بنجاح!';
-                            locationStatus.style.color = 'var(--success-color)';
-                        },
-                        error => {
-                            locationStatus.textContent = 'فشل في تحديد الموقع. يرجى المحاولة مرة أخرى.';
-                            locationStatus.style.color = 'var(--primary-color)';
-                        }
-                    );
-                } else {
-                    locationStatus.textContent = 'المتصفحح لا يدعم تحديد الموقع.';
-                    locationStatus.style.color = 'var(--primary-color)';
-                }
-            });
-
-            // Submit Order
-            checkoutForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                
-                const name = document.getElementById('customer-name').value;
-                const phone = document.getElementById('customer-phone').value;
-                const building = document.getElementById('building-number').value;
-                const apartment = document.getElementById('apartment-number').value;
-                const notes = document.getElementById('address-notes').value;
-                
-                // Validate form
-                if (!name || !phone || !building || !apartment) {
-                    document.getElementById('checkout-form-error').textContent = 'يرجى ملء جميع الحقول المطلوبة';
-                    document.getElementById('checkout-form-error').style.display = 'block';
-                    return;
-                }
-                
-                if (!userLocation) {
-                    document.getElementById('checkout-form-error').textContent = 'يرجى تحديد موقعك على الخريطة';
-                    document.getElementById('checkout-form-error').style.display = 'block';
-                    return;
-                }
-                
-                // Create order message
-                let orderMessage = `طلب جديد من ${name}\n`;
-                orderMessage += `رقم الهاتف: ${phone}\n`;
-                orderMessage += `العنوان: عمارة ${building}، شقة ${apartment}\n`;
-                if (notes) orderMessage += `علامة مميزة: ${notes}\n`;
-                orderMessage += `الموقع: https://www.google.com/maps?q=${userLocation.lat},${userLocation.lng}\n\n`;
-                orderMessage += `المنتججات:\n`;
-                
-                let total = 0;
-                cart.forEach(item => {
-                    const price = parseFloat(item.newPrice.replace(/[^0-9.]/g, ''));
-                    const itemTotal = price * item.quantity;
-                    total += itemTotal;
-                    orderMessage += `- ${item.name} (${item.quantity} × ${item.newPrice}) = ${itemTotal.toFixed(2)} جنيه\n`;
-                });
-                
-                orderMessage += `\nالإجمالي: ${total.toFixed(2)} جنيه`;
-                
-                // Generate WhatsApp link to group
-                const whatsappLinks = document.getElementById('whatsapp-links');
-                whatsappLinks.innerHTML = `
-                    <a href="https://chat.whatsapp.com/JoJySSxhWThGouxrrvSJSV?mode=wwc&text=${encodeURIComponent(orderMessage)}" target="_blank">
-                        <i class="fab fa-whatsapp"></i> إرسال الطلب إلى جروب واتساب
-                    </a>
-                `;
-                
-                // Show success modal
-                checkoutModal.style.display = "none";
-                orderSuccessModal.style.display = "block";
-                
-                // Clear cart
-                cart = [];
-                saveCart();
-                updateCartBadge();
-                
-                // Reset form
-                checkoutForm.reset();
-                userLocation = null;
-                locationStatus.textContent = '';
-            });
-
-            // Initialize Category Filter
+            // Initialize category filter buttons
             function initCategoryFilter() {
-                const categories = ['all', ...new Set(products.map(product => product.category))];
+                categoryFilterContainer.innerHTML = '';
                 
                 categories.forEach(category => {
                     const button = document.createElement('button');
                     button.className = 'filter-btn';
-                    button.textContent = categoryNames[category] || category;
-                    button.dataset.category = category;
+                    button.textContent = category.name;
+                    button.dataset.category = category.id;
                     
-                    if (category === 'all') {
+                    if (category.id === 'all') {
                         button.classList.add('active');
                     }
                     
                     button.addEventListener('click', () => {
-                        // Update active state
                         document.querySelectorAll('.filter-btn').forEach(btn => {
                             btn.classList.remove('active');
                         });
                         button.classList.add('active');
                         
-                        // Filter products
-                        filterProducts(category);
+                        activeCategory = category.id;
+                        filterProducts();
                     });
                     
                     categoryFilterContainer.appendChild(button);
                 });
             }
 
-            // Filter Products
-            function filterProducts(category) {
+            // Filter products based on active category and search term
+            function filterProducts() {
                 const searchTerm = searchInput.value.toLowerCase();
                 
-                let filteredProducts = products;
+                filteredProducts = products.filter(product => {
+                    const matchesCategory = activeCategory === 'all' || product.category === activeCategory;
+                    const matchesSearch = product.name.toLowerCase().includes(searchTerm);
+                    
+                    return matchesCategory && matchesSearch;
+                });
                 
-                if (category !== 'all') {
-                    filteredProducts = filteredProducts.filter(product => product.category === category);
-                }
-                
-                if (searchTerm) {
-                    filteredProducts = filteredProducts.filter(product => 
-                        product.name.toLowerCase().includes(searchTerm)
-                    );
-                }
-                
-                renderProducts(filteredProducts);
+                renderProducts();
             }
 
-            // Search Products
-            searchInput.addEventListener('input', () => {
-                const activeCategory = document.querySelector('.filter-btn.active').dataset.category;
-                filterProducts(activeCategory);
-            });
-
-            // Render Products
-            function renderProducts(productsToRender) {
+            // Render products
+            function renderProducts() {
                 productList.innerHTML = '';
                 
-                if (productsToRender.length === 0) {
-                    productList.innerHTML = '<p style="text-align: center; grid-column: 1/-1;">لا توجد منتجات متاحة</p>';
+                if (filteredProducts.length === 0) {
+                    productList.innerHTML = '<p style="text-align: center; grid-column: 1/-1;">لا توجد منتجات مطابقة للبحث.</p>';
                     return;
                 }
                 
-                productsToRender.forEach(product => {
+                filteredProducts.forEach(product => {
                     const productCard = document.createElement('div');
                     productCard.className = 'product-card';
                     
-                    // Calculate discount percentage if old price exists
-                    let discountBadge = '';
-                    if (product.oldPrice) {
-                        const oldPrice = parseFloat(product.oldPrice.replace(/[^0-9.]/g, ''));
-                        const newPrice = parseFloat(product.newPrice.replace(/[^0-9.]/g, ''));
-                        const discount = Math.round((1 - newPrice / oldPrice) * 100);
-                        discountBadge = `<span class="discount-badge">-${discount}%</span>`;
-                    }
-                    
                     productCard.innerHTML = `
-                        <img src="${product.image}" alt="${product.name}" onerror="this.src='${defaultImage}'">
+                        <img src="${product.image}" alt="${product.name}" loading="lazy">
                         <div class="product-info">
                             <h3>${product.name}</h3>
-                            <div class="price">
+                            <div class="price-container">
                                 ${product.oldPrice ? `<span class="old-price">${product.oldPrice}</span>` : ''}
                                 <span class="new-price">${product.newPrice}</span>
-                                ${discountBadge}
                             </div>
                             <button class="add-to-cart-btn" data-product="${product.name}">
                                 <i class="fas fa-cart-plus"></i> أضف للسلة
@@ -1580,15 +1288,336 @@
                     // Add event listener to the button
                     const addToCartBtn = productCard.querySelector('.add-to-cart-btn');
                     addToCartBtn.addEventListener('click', () => addToCart(product));
+                    
+                    // Add event listener to the image for lightbox
+                    const productImage = productCard.querySelector('img');
+                    productImage.addEventListener('click', () => openImageModal(product.image, product.name));
                 });
-                
-                // Setup modal event listeners for new images
-                setupModalEventListeners();
             }
 
-            // Initialize the page
-            initCategoryFilter();
-            renderProducts(products);
+            // Add product to cart
+            function addToCart(product) {
+                const existingItem = cart.find(item => item.name === product.name);
+                
+                if (existingItem) {
+                    existingItem.quantity++;
+                } else {
+                    cart.push({
+                        ...product,
+                        quantity: 1
+                    });
+                }
+                
+                updateCartBadge();
+                
+                // Visual feedback
+                const button = document.querySelector(`[data-product="${product.name}"]`);
+                if (button) {
+                    button.classList.add('added');
+                    button.innerHTML = '<i class="fas fa-check"></i> تمت الإضافة';
+                    
+                    setTimeout(() => {
+                        button.classList.remove('added');
+                        button.innerHTML = '<i class="fas fa-cart-plus"></i> أضف للسلة';
+                    }, 1500);
+                }
+            }
+
+            // Update cart badge
+            function updateCartBadge() {
+                const badge = document.getElementById('cart-badge');
+                const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+                badge.textContent = totalItems;
+            }
+
+            // Cart Modal
+            const cartFab = document.getElementById('cart-fab');
+            const cartModal = document.getElementById('cart-modal');
+            const closeCartModal = document.getElementById('close-cart-modal');
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartTotalElement = document.getElementById('cart-total');
+            const emptyCartMsg = document.getElementById('empty-cart-msg');
+            const clearCartBtn = document.getElementById('clear-cart-btn');
+            const checkoutBtn = document.getElementById('checkout-btn');
+
+            cartFab.addEventListener('click', openCartModal);
+            closeCartModal.addEventListener('click', closeCart);
+            clearCartBtn.addEventListener('click', clearCart);
+            checkoutBtn.addEventListener('click', openCheckoutModal);
+
+            function openCartModal() {
+                renderCartItems();
+                cartModal.style.display = 'block';
+            }
+
+            function closeCart() {
+                cartModal.style.display = 'none';
+            }
+
+            function clearCart() {
+                cart = [];
+                updateCartBadge();
+                renderCartItems();
+            }
+
+            function renderCartItems() {
+                if (cart.length === 0) {
+                    cartItemsContainer.innerHTML = '';
+                    emptyCartMsg.style.display = 'block';
+                    cartTotalElement.textContent = '';
+                    return;
+                }
+                
+                emptyCartMsg.style.display = 'none';
+                cartItemsContainer.innerHTML = '';
+                
+                let total = 0;
+                
+                cart.forEach((item, index) => {
+                    const cartItem = document.createElement('div');
+                    cartItem.className = 'cart-item';
+                    
+                    // Extract numeric price from string
+                    const priceText = item.newPrice.replace(/[^0-9.]/g, '');
+                    const price = parseFloat(priceText);
+                    const itemTotal = price * item.quantity;
+                    total += itemTotal;
+                    
+                    cartItem.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}">
+                        <div class="cart-item-info">
+                            <h4>${item.name}</h4>
+                            <div class="cart-item-controls">
+                                <button class="decrease-quantity" data-index="${index}">-</button>
+                                <span>${item.quantity}</span>
+                                <button class="increase-quantity" data-index="${index}">+</button>
+                            </div>
+                        </div>
+                        <div>${item.newPrice}</div>
+                        <button class="cart-item-remove" data-index="${index}"><i class="fas fa-trash"></i></button>
+                    `;
+                    
+                    cartItemsContainer.appendChild(cartItem);
+                });
+                
+                cartTotalElement.textContent = `الإجمالي: ${total.toFixed(2)} جنيه`;
+                
+                // Add event listeners to cart item controls
+                document.querySelectorAll('.increase-quantity').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const index = parseInt(e.target.dataset.index);
+                        cart[index].quantity++;
+                        updateCartBadge();
+                        renderCartItems();
+                    });
+                });
+                
+                document.querySelectorAll('.decrease-quantity').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const index = parseInt(e.target.dataset.index);
+                        if (cart[index].quantity > 1) {
+                            cart[index].quantity--;
+                        } else {
+                            cart.splice(index, 1);
+                        }
+                        updateCartBadge();
+                        renderCartItems();
+                    });
+                });
+                
+                document.querySelectorAll('.cart-item-remove').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const index = parseInt(e.target.dataset.index);
+                        cart.splice(index, 1);
+                        updateCartBadge();
+                        renderCartItems();
+                    });
+                });
+            }
+
+            // Checkout Modal
+            const checkoutModal = document.getElementById('checkout-modal');
+            const closeCheckoutModal = document.getElementById('close-checkout-modal');
+            const checkoutForm = document.getElementById('checkout-form');
+            const getLocationBtn = document.getElementById('get-location-btn');
+            const locationStatus = document.getElementById('location-status');
+            const checkoutFormError = document.getElementById('checkout-form-error');
+            
+            let userLocation = null;
+
+            closeCheckoutModal.addEventListener('click', () => {
+                checkoutModal.style.display = 'none';
+            });
+
+            checkoutForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                submitOrder();
+            });
+
+            getLocationBtn.addEventListener('click', getUserLocation);
+
+            function openCheckoutModal() {
+                if (cart.length === 0) return;
+                
+                closeCart();
+                checkoutModal.style.display = 'block';
+            }
+
+            function getUserLocation() {
+                if (navigator.geolocation) {
+                    getLocationBtn.disabled = true;
+                    getLocationBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري تحديد الموقع...';
+                    
+                    navigator.geolocation.getCurrentPosition(
+                        (position) => {
+                            userLocation = {
+                                lat: position.coords.latitude,
+                                lng: position.coords.longitude
+                            };
+                            
+                            locationStatus.textContent = 'تم تحديد موقعك بنجاح!';
+                            locationStatus.style.color = 'var(--success-color)';
+                            
+                            getLocationBtn.disabled = false;
+                            getLocationBtn.innerHTML = '<i class="fas fa-map-marker-alt"></i> تحديد موقعي الحالي';
+                        },
+                        (error) => {
+                            locationStatus.textContent = 'فشل في تحديد الموقع. يرجى المحاولة مرة أخرى.';
+                            locationStatus.style.color = 'var(--primary-color)';
+                            
+                            getLocationBtn.disabled = false;
+                            getLocationBtn.innerHTML = '<i class="fas fa-map-marker-alt"></i> تحديد موقعي الحالي';
+                        }
+                    );
+                } else {
+                    locationStatus.textContent = 'المتصفح لا يدعم تحديد الموقع الجغرافي.';
+                    locationStatus.style.color = 'var(--primary-color)';
+                }
+            }
+
+            function submitOrder() {
+                const name = document.getElementById('customer-name').value.trim();
+                const phone = document.getElementById('customer-phone').value.trim();
+                const building = document.getElementById('building-number').value.trim();
+                const apartment = document.getElementById('apartment-number').value.trim();
+                const notes = document.getElementById('address-notes').value.trim();
+                
+                // Validation
+                if (!name || !phone || !building || !apartment) {
+                    checkoutFormError.textContent = 'يرجى ملء جميع الحقول المطلوبة.';
+                    checkoutFormError.style.display = 'block';
+                    return;
+                }
+                
+                if (!userLocation) {
+                    checkoutFormError.textContent = 'يرجى تحديد موقعك على الخريطة.';
+                    checkoutFormError.style.display = 'block';
+                    return;
+                }
+                
+                checkoutFormError.style.display = 'none';
+                
+                // Create order details
+                let orderDetails = `طلب جديد من ${name}\n\n`;
+                orderDetails += `معلومات التواصل:\n`;
+                orderDetails += `الاسم: ${name}\n`;
+                orderDetails += `رقم الهاتف: ${phone}\n\n`;
+                orderDetails += `عنوان التوصيل:\n`;
+                orderDetails += `رقم العمارة: ${building}\n`;
+                orderDetails += `رقم الشقة: ${apartment}\n`;
+                if (notes) orderDetails += `علامة مميزة: ${notes}\n`;
+                orderDetails += `موقع: https://www.google.com/maps?q=${userLocation.lat},${userLocation.lng}\n\n`;
+                orderDetails += `المنتجات المطلوبة:\n`;
+                
+                let total = 0;
+                cart.forEach(item => {
+                    const priceText = item.newPrice.replace(/[^0-9.]/g, '');
+                    const price = parseFloat(priceText);
+                    const itemTotal = price * item.quantity;
+                    total += itemTotal;
+                    
+                    orderDetails += `- ${item.name} (${item.quantity} × ${item.newPrice}) = ${itemTotal.toFixed(2)} جنيه\n`;
+                });
+                
+                orderDetails += `\nالإجمالي: ${total.toFixed(2)} جنيه`;
+                
+                // Open WhatsApp with order details
+                const whatsappUrl = `https://chat.whatsapp.com/JoJySSxhWThGouxrrvSJSV?mode=wwc&text=${encodeURIComponent(orderDetails)}`;
+                window.open(whatsappUrl, '_blank');
+                
+                // Show success modal
+                showOrderSuccessModal();
+                
+                // Reset form and cart
+                checkoutForm.reset();
+                userLocation = null;
+                locationStatus.textContent = '';
+                cart = [];
+                updateCartBadge();
+                checkoutModal.style.display = 'none';
+            }
+
+            // Order Success Modal
+            const orderSuccessModal = document.getElementById('order-success-modal');
+            const closeSuccessModal = document.getElementById('close-success-modal');
+            const whatsappLinksContainer = document.getElementById('whatsapp-links');
+            
+            closeSuccessModal.addEventListener('click', () => {
+                orderSuccessModal.style.display = 'none';
+            });
+
+            function showOrderSuccessModal() {
+                whatsappLinksContainer.innerHTML = `
+                    <a href="https://chat.whatsapp.com/JoJySSxhWThGouxrrvSJSV?mode=wwc" target="_blank">
+                        <i class="fab fa-whatsapp"></i> انضم لمجموعة الواتساب
+                    </a>
+                `;
+                orderSuccessModal.style.display = 'block';
+            }
+
+            // Image Modal (Lightbox)
+            const imageModal = document.getElementById('image-modal');
+            const modalImg = document.getElementById('modal-img');
+            const caption = document.getElementById('caption');
+            const closeImageModal = document.getElementById('close-image-modal');
+
+            closeImageModal.addEventListener('click', () => {
+                imageModal.style.display = 'none';
+            });
+
+            function openImageModal(imageSrc, imageAlt) {
+                modalImg.src = imageSrc;
+                caption.textContent = imageAlt;
+                imageModal.style.display = 'block';
+            }
+
+            // Close modals when clicking outside
+            window.addEventListener('click', (e) => {
+                if (e.target === cartModal) {
+                    closeCart();
+                }
+                if (e.target === checkoutModal) {
+                    checkoutModal.style.display = 'none';
+                }
+                if (e.target === orderSuccessModal) {
+                    orderSuccessModal.style.display = 'none';
+                }
+                if (e.target === imageModal) {
+                    imageModal.style.display = 'none';
+                }
+            });
+
+            // Search functionality
+            searchInput.addEventListener('input', filterProducts);
+
+            // Initialize the app
+            function init() {
+                initCategoryFilter();
+                renderProducts();
+                updateCartBadge();
+            }
+
+            init();
         });
     </script>
 </body>
