@@ -2403,8 +2403,11 @@
                 message += `🏢 رقم العمارة: ${buildingNumber}\n`;
                 message += `🏠 رقم الشقة: ${apartmentNumber}\n`;
                 
-                // Convert coordinates to Google Maps link
-                if (location && location.includes(',')) {
+                // Check if location is a Google Maps link
+                if (location && location.includes('google.com/maps')) {
+                    message += `📍 الموقع: ${location}\n`;
+                } else if (location && location.includes(',')) {
+                    // If it's coordinates, convert to Google Maps link
                     const [lat, lng] = location.split(',');
                     message += `📍 الموقع: https://www.google.com/maps?q=${lat},${lng}\n`;
                 } else {
@@ -2462,7 +2465,7 @@
                 successMessage.classList.remove('active');
             });
             
-            // Get location functionality
+            // Get location functionality - FIXED VERSION
             getLocationBtn.addEventListener('click', function() {
                 if (navigator.geolocation) {
                     locationStatus.textContent = 'جاري تحديد الموقع...';
@@ -2473,7 +2476,15 @@
                             const lat = position.coords.latitude;
                             const lng = position.coords.longitude;
                             
-                            locationInput.value = `${lat.toFixed(6)}, ${lng.toFixed(6)}`;
+                            // Create Google Maps link instead of just coordinates
+                            const googleMapsLink = `https://www.google.com/maps?q=${lat},${lng}`;
+                            
+                            // Store the link in the input field
+                            locationInput.value = googleMapsLink;
+                            
+                            // Also store coordinates in a data attribute for reference
+                            locationInput.dataset.coordinates = `${lat},${lng}`;
+                            
                             locationStatus.textContent = 'تم تحديد الموقع بنجاح';
                             locationStatus.className = 'location-status success';
                         },
