@@ -26,7 +26,7 @@
             background-color: var(--background-color);
             margin: 0;
             padding: 0;
-            background-image: url('https://images.unsplash.com/photo-1583258292688-d0213dc5a3a8?w=1200&q=80');
+            background-image: url('https://images.unsplash.com/photo-15832582D2688-d0213dc5a3a8?w=1200&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -608,6 +608,7 @@
             margin-top: 20px;
             font-size: 1.5em;
             font-weight: bold;
+            padding-top: 10px;
         }
         .cart-footer {
             margin-top: 20px;
@@ -840,7 +841,7 @@
         <div class="modal-content">
              <span class="close-modal dark" id="close-success-modal">&times;</span>
              <h2>تم تجهيز طلبك!</h2>
-             <p>الرجاء إرسال الطلب عبر الواتساب لإتمام عملية الشراء.</p>
+             <p>لإتمام الطلب، الرجاء إرسال رسالة الواتساب إلى <strong>كل الأرقام التالية</strong>:</p>
              <div class="whatsapp-links" id="whatsapp-links">
                  <!-- WhatsApp links will be injected here -->
              </div>
@@ -1060,12 +1061,23 @@
                     </div>
                 `).join('');
 
-                const total = cart.reduce((sum, item) => {
+                const subtotal = cart.reduce((sum, item) => {
                     const price = parseFloat(item.newPrice.replace(/[^0-9.]/g, ''));
                     return sum + (price * item.quantity);
                 }, 0);
 
-                cartTotalEl.innerHTML = `الإجمالي: <strong>${total.toFixed(2)} جنيه</strong>`;
+                if (subtotal > 0) {
+                    const deliveryFee = 10.00;
+                    const grandTotal = subtotal + deliveryFee;
+                    cartTotalEl.innerHTML = `
+                        <p style="font-size: 0.8em; color: #666; margin: 0;">المجموع: ${subtotal.toFixed(2)} جنيه</p>
+                        <p style="font-size: 0.8em; color: #666; margin: 0;">م. التوصيل: ${deliveryFee.toFixed(2)} جنيه</p>
+                        <hr style="border-top: 1px solid #eee; margin: 10px 0;">
+                        الإجمالي: <strong>${grandTotal.toFixed(2)} جنيه</strong>
+                    `;
+                } else {
+                    cartTotalEl.innerHTML = '';
+                }
             }
 
             function addToCart(productData) {
@@ -1190,18 +1202,22 @@
                     return;
                 }
                 
-                // Construct message
-                const total = cart.reduce((sum, item) => {
+                const subtotal = cart.reduce((sum, item) => {
                     const price = parseFloat(item.newPrice.replace(/[^0-9.]/g, ''));
                     return sum + (price * item.quantity);
-                }, 0).toFixed(2);
+                }, 0);
+                const deliveryFee = 10.00;
+                const grandTotal = subtotal + deliveryFee;
 
                 let message = `*طلب جديد من أسواق تبارك*\n\n`;
                 message += "*المنتجات:*\n";
                 cart.forEach(item => {
-                    message += `- ${item.name} (الكمية: ${item.quantity})\n`;
+                    message += `- ${item.name} (الكمية: ${item.quantity}) - ${item.newPrice}\n`;
                 });
-                message += `\n*الإجمالي: ${total} جنيه*\n\n`;
+                message += `\n*المجموع: ${subtotal.toFixed(2)} جنيه*`;
+                message += `\n*م. التوصيل: ${deliveryFee.toFixed(2)} جنيه*`;
+                message += `\n*الإجمالي النهائي: ${grandTotal.toFixed(2)} جنيه*\n\n`;
+
                 message += `*بيانات العميل:*\n`;
                 message += `الاسم: ${customerName}\n`;
                 message += `الموبايل: ${customerPhone}\n`;
@@ -1212,7 +1228,7 @@
                 message += `الموقع: ${mapLink}`;
 
                 const encodedMessage = encodeURIComponent(message);
-                const phoneNumbers = ['201030566078', '201118091234', '201095348285'];
+                const phoneNumbers = ['201030566078', '201118091234', '201030566077'];
                 
                 const whatsappLinksContainer = document.getElementById('whatsapp-links');
                 whatsappLinksContainer.innerHTML = ''; // Clear previous links
@@ -1344,4 +1360,3 @@
     </script>
 </body>
 </html>
-
