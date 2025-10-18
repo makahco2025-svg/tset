@@ -861,23 +861,49 @@
 
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Professional Slider Logic
-            const sliderProducts = [
-                {name: "طبق بيض ابيض", oldPrice: "170.00 جنيه", newPrice: "159.00 جنيه", discount: "-25%", image: "https://cdn.metro-cc.ru/ru/ru_pim_195676001001_01.png", description: "جودة عالية وأسعار منافسة"},
-                {name: "كيلو سمن سايب", oldPrice: "120.00 جنيه", newPrice: "100.00 جنيه", discount: "-20%", image: "https://www2.0zz0.com/2025/10/18/16/405726208.jpeg", description: "سمن طبيعي 100%"},
-                {name: "كيلو أرز وسط", oldPrice: "28.00 جنيه", newPrice: "22.00 جنيه", discount: "-20%", image: "https://www.albayan.ae/assets/archives/images/2023/08/25/4715792.jpg", description: "أفضل أنواع الأرز"},
-                {name: "2 زيت سندباد", oldPrice: "130.00 جنيه", newPrice: "105.00 جنيه", discount: "-25%", image: "https://lana.gov.ly/images/src/215410.jpg", description: "زيت نباتي صحي"},
-                {name: "2 كيلو دقيق سايب", oldPrice: "40.00 جنيه", newPrice: "35.00 جنيه", discount: "-25%", image: "https://cdn.nur.kz/images/1200x675/7d9be34e89d9523d.jpeg", description: "دقيق عالي الجودة"},
-                {name: "كيلو جبنة ثلاجة", oldPrice: "140.00 جنيه", newPrice: "120.00 جنيه", discount: "-15%", image: "https://i.pinimg.com/736x/73/6f/8f/736f8fb118ca449d576f26b3a319da79.jpg", description: "جبنة طازجة من أفضل المزارع"},
-                {name: "كيلو جبنة براملى", oldPrice: "180.00 جنيه", newPrice: "160.00 جنيه", discount: "-12%", image: "https://avatars.dzeninfra.ru/get-zen_doc/3901320/pub_6209e776279dc141916f0754_6209eb7cf978a974ec4a23c2/scale_1200", description: "جبنة براملى ممتازة"},
-                {name: "شكارة ارز 25 كجم", oldPrice: "620.00 جنيه", newPrice: "570.00 جنيه", discount: "-8%", image: "https://mir-s3-cdn-cf.behance.net/project_modules/hd/24432229385577.55f071518fbd7.jpg", description: "توفير كبير عند الشراء بالجملة"},
-                {name: "برجر المراعى عائلى", oldPrice: "125.00 جنيه", newPrice: "115.00 جنيه", discount: "-8%", image: "https://www2.0zz0.com/2025/09/26/01/478227720.jpg", description: "لحم بقري عالي الجودة"},
-                {name: "كيلو رنجة درجة أولى", oldPrice: "140.00 جنيه", newPrice: "115.00 جنيه", discount: "-18%", image: "https://ychef.files.bbci.co.uk/976x549/p04xs9bl.jpg0", description: "رنجة طازجة من أفضل الأنواع"},
-                {name: "زجاجة زيت حلوة 5 لتر", oldPrice: "330.00 جنيه", newPrice: "315.00 جنيه", discount: "-5%", image: "https://ashiae-bucket.s3.eu-west-3.amazonaws.com/products/6521-ex-0.jpg", description: "زيت نباتي خالص"},
-                {name: "كيلو عسل اسمر", oldPrice: "45.00 جنيه", newPrice: "38.00 جنيه", discount: "-16%", image: "https://img.diytrade.com/smimg/2935125/49070690-11280215-0/Molasses_sugar_cane/8445.jpg", description: "عسل طبيعي خالص"}
-            ];
-
+// Professional Slider Logic - Completely New Design
+const sliderProducts = [
+    {name: "طبق بيض ابيض", oldPrice: "170.00 جنيه", newPrice: "159.00 جنيه", discount: "-25%", image: "https://cdn.metro-cc.ru/ru/ru_pim_195676001001_01.png", description: "جودة عالية وأسعار منافسة"},
+    {name: "كيلو سمن سايب", oldPrice: "120.00 جنيه", newPrice: "100.00 جنيه", discount: "-20%", image: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/201911/ghee.png", description: "سمن طبيعي 100%"},
+    {name: "كيلو أرز وسط", oldPrice: "28.00 جنيه", newPrice: "22.00 جنيه", discount: "-20%", image: "https://www.albayan.ae/assets/archives/images/2023/08/25/4715792.jpg", description: "أفضل أنواع الأرز"},
+    {name: "2 زيت سندباد", oldPrice: "130.00 جنيه", newPrice: "105.00 جنيه", discount: "-25%", image: "https://lana.gov.ly/images/src/215410.jpg", description: "زيت نباتي صحي"},
+    {name: "2 كيلو دقيق سايب", oldPrice: "40.00 جنيه", newPrice: "35.00 جنيه", discount: "-25%", image: "https://cdn.nur.kz/images/1200x675/7d9be34e89d9523d.jpeg", description: "دقيق عالي الجودة"},
+    {name: "كيلو جبنة ثلاجة", oldPrice: "140.00 جنيه", newPrice: "120.00 جنيه", discount: "-15%", image: "https://i.pinimg.com/736x/73/6f/8f/736f8fb118ca449d576f26b3a319da79.jpg", description: "جبنة طازجة من أفضل المزارع"},
+    {name: "كيلو جبنة براملى", oldPrice: "180.00 جنيه", newPrice: "160.00 جنيه", discount: "-12%", image: "https://avatars.dzeninfra.ru/get-zen_doc/3901320/pub_6209e776279dc141916f0754_6209eb7cf978a974ec4a23c2/scale_1200", description: "جبنة براملى ممتازة"},
+    {name: "شكارة ارز 25 كجم", oldPrice: "620.00 جنيه", newPrice: "570.00 جنيه", discount: "-8%", image: "https://mir-s3-cdn-cf.behance.net/project_modules/hd/24432229385577.55f071518fbd7.jpg", description: "توفير كبير عند الشراء بالجملة"},
+    {name: "برجر المراعى عائلى", oldPrice: "125.00 جنيه", newPrice: "115.00 جنيه", discount: "-8%", image: "https://www2.0zz0.com/2025/09/26/01/478227720.jpg", description: "لحم بقري عالي الجودة"},
+    {name: "كيلو رنجة درجة أولى", oldPrice: "140.00 جنيه", newPrice: "115.00 جنيه", discount: "-18%", image: "https://ychef.files.bbci.co.uk/976x549/p04xs9bl.jpg0", description: "رنجة طازجة من أفضل الأنواع"},
+    {name: "زجاجة زيت حلوة 5 لتر", oldPrice: "330.00 جنيه", newPrice: "315.00 جنيه", discount: "-5%", image: "https://ashiae-bucket.s3.eu-west-3.amazonaws.com/products/6521-ex-0.jpg", description: "زيت نباتي خالص"},
+    {name: "كيلو عسل اسمر", oldPrice: "45.00 جنيه", newPrice: "38.00 جنيه", discount: "-16%", image: "https://img.diytrade.com/smimg/2935125/49070690-11280215-0/Molasses_sugar_cane/8445.jpg", description: "عسل طبيعي خالص"},
+    // المنتجات الجديدة المضافة
+    {name: "طبق بيض أحمر", oldPrice: "175.00 جنيه", newPrice: "165.00 جنيه", discount: "-6%", image: "https://avatars.mds.yandex.net/get-mpic/4614113/img_id4420346577537823307.jpeg/orig", description: "بيض أحمر عالي الجودة"},
+    {name: "كيلو أرز عريض", oldPrice: "32.00 جنيه", newPrice: "28.00 جنيه", discount: "-13%", image: "https://avatars.mds.yandex.net/get-mpic/4547325/img_id7962333466218946176.jpeg/orig", description: "أرز عريض ممتاز"},
+    {name: "شكارة أرز 25 كيلو عريض", oldPrice: "740.00 جنيه", newPrice: "675.00 جنيه", discount: "-9%", image: "https://mir-s3-cdn-cf.behance.net/project_modules/hd/24432229385577.55f071518fbd7.jpg", description: "توفير كبير عند الشراء بالجملة"},
+    {name: "كيلو مكرونة أنواع ماعدا الإسباجيتي", oldPrice: "24.00 جنيه", newPrice: "20.00 جنيه", discount: "-17%", image: "https://cdn-uz.kursiv.media/wp-content/uploads/2024/08/scale_1200-16.jpg", description: "مكرونة بجودة عالية"},
+    {name: "2 كيلو سكر وزن 1000جم صافي", oldPrice: "70.00 جنيه", newPrice: "58.00 جنيه", discount: "-17%", image: "https://www2.0zz0.com/2025/10/10/02/865311217.png", description: "سكر نقي عالي الجودة"},
+    {name: "شكارة مكرونة أي نوع ماعدا الإسباجيتي", oldPrice: "220.00 جنيه", newPrice: "195.00 جنيه", discount: "-11%", image: "https://cdn-uz.kursiv.media/wp-content/uploads/2024/08/scale_1200-16.jpg", description: "توفير كبير عند الشراء بالجملة"},
+    {name: "كيلو طحينة سايب", oldPrice: "160.00 جنيه", newPrice: "120.00 جنيه", discount: "-25%", image: "https://img.kompass.com/sys-master-images/h9d/h04/9151179620382/tahini-hss-jpg", description: "طحينة طبيعية 100%"},
+    {name: "باكت ملح بونو", oldPrice: "48.00 جنيه", newPrice: "35.00 جنيه", discount: "-27%", image: "https://www2.0zz0.com/2025/10/10/02/606345585.jpg", description: "ملح عالي الجودة"},
+    {name: "3 خل العزة", oldPrice: "30.00 جنيه", newPrice: "25.00 جنيه", discount: "-17%", image: "https://m.media-amazon.com/images/S/aplus-media/sota/43272024-50ec-492b-ac71-fe8e028d2159.__CR0,0,970,600_PT0_SX970_V1___.jpg", description: "خل طبيعي بنكهة مميزة"},
+    {name: "5 كيس مكرونة غالية مشكل", oldPrice: "60.00 جنيه", newPrice: "50.00 جنيه", discount: "-17%", image: "https://m.media-amazon.com/images/I/618Kej3if1L._AC_UF1000,1000_QL80_.jpg", description: "مكرونة غالية مشكلة"},
+    {name: "كيلو مخلل بوليف", oldPrice: "30.00 جنيه", newPrice: "20.00 جنيه", discount: "-33%", image: "https://i.ytimg.com/vi/Y2_CtbPh3Es/maxresdefault.jpg", description: "مخلل بوليف شهي"},
+    {name: "5 كيس مكرونة الملكة مشكل", oldPrice: "75.00 جنيه", newPrice: "69.00 جنيه", discount: "-8%", image: "https://i1.sndcdn.com/artworks-czylEj2FpnwIX9xD-K9X77w-t500x500.jpg", description: "مكرونة الملكة مشكلة"},
+    {name: "برجر حلواني عائلي 25 ق", oldPrice: "220.00 جنيه", newPrice: "205.00 جنيه", discount: "-7%", image: "https://www2.0zz0.com/2025/09/26/01/864482321.jpg", description: "برجر حلواني عالي الجودة"},
+    {name: "برجر توابل شرقية عائلي 25 ق", oldPrice: "135.00 جنيه", newPrice: "125.00 جنيه", discount: "-7%", image: "https://www2.0zz0.com/2025/09/26/01/532428282.jpg", description: "برجر بنكهة توابل شرقية"},
+    {name: "علبة ماجي شريط قلب أحمر", oldPrice: "48.00 جنيه", newPrice: "39.00 جنيه", discount: "-19%", image: "https://gomla-eg.com/image/cache/catalog/products/655.png-550x550w.png.webp", description: "ماجي شريط قلب أحمر"},
+    {name: "2 علبة صلصة صفيح دهشة", oldPrice: "70.00 جنيه", newPrice: "50.00 جنيه", discount: "-29%", image: "https://images.freshop.com/00024000013723/336ed2e97ca1a8ff47d459c3a1b062c4_large.png", description: "صلصة دهشة لذيذة"},
+    {name: "2 علبة صلصة برطمان دهشة", oldPrice: "40.00 جنيه", newPrice: "35.00 جنيه", discount: "-13%", image: "https://www2.0zz0.com/2025/10/10/02/974509974.jpg", description: "صلصة دهشة برطمان"},
+    {name: "زيت هنادي 2.5 لتر", oldPrice: "160.00 جنيه", newPrice: "150.00 جنيه", discount: "-6%", image: "https://i.pinimg.com/236x/a6/fd/44/a6fd4456e37323d17a042f4d231fb4e1.jpg?nii=t", description: "زيت هنادي عالي الجودة"},
+    {name: "كيلو حلاوة سايبة ممتازة", oldPrice: "140.00 جنيه", newPrice: "120.00 جنيه", discount: "-14%", image: "https://e498h76z5mp.exactdn.com/wp-content/uploads/2020/11/sesame-halva-scaled.jpg", description: "حلاوة سايبة ممتازة"},
+    {name: "3 علبة تونة", oldPrice: "90.00 جنيه", newPrice: "75.00 جنيه", discount: "-17%", image: "https://m.media-amazon.com/images/I/81OI18KZr+L._AC_UL1200_QL65_.jpg", description: "تونة عالية الجودة"},
+    {name: "باكت أرز 10كجم الخير والبركة", oldPrice: "260.00 جنيه", newPrice: "245.00 جنيه", discount: "-6%", image: "https://mir-s3-cdn-cf.behance.net/project_modules/hd/24432229385577.55f071518fbd7.jpg", description: "أرز الخير والبركة"},
+    {name: "2 أرز الخير والبركة", oldPrice: "60.00 جنيه", newPrice: "52.00 جنيه", discount: "-13%", image: "https://www2.0zz0.com/2025/10/10/02/196820438.jpg", description: "أرز الخير والبركة"},
+    {name: "كيلو كاتشب حار-بارد", oldPrice: "50.00 جنيه", newPrice: "40.00 جنيه", discount: "-20%", image: "https://faragalla.com/wp-content/uploads/2019/09/DSC_1883.jpg", description: "كاتشب حار وبارد"},
+    {name: "2 زيت سهر لتر", oldPrice: "140.00 جنيه", newPrice: "130.00 جنيه", discount: "-7%", image: "https://m.media-amazon.com/images/I/61JJAIPAjnL.jpg", description: "زيت سهر عالي الجودة"},
+    {name: "2 زيت سهر 700 جرام", oldPrice: "110.00 جنيه", newPrice: "95.00 جنيه", discount: "-14%", image: "https://www2.0zz0.com/2025/10/10/02/423777303.jpg", description: "زيت سهر 700 جرام"},
+    {name: "زيت قلية لتر صافي", oldPrice: "80.00 جنيه", newPrice: "75.00 جنيه", discount: "-6%", image: "https://m.media-amazon.com/images/I/61JJAIPAjnL.jpg", description: "زيت قلية صافي"},
+    {name: "زيت قلية 700جرام", oldPrice: "60.00 جنيه", newPrice: "55.00 جنيه", discount: "-8%", image: "https://www2.0zz0.com/2025/09/26/02/438357989.jpg", description: "زيت قلية 700 جرام"}
+];
             const sliderWrapper = document.querySelector('.slider-wrapper');
             const sliderDots = document.querySelector('.slider-dots');
             const prevSlideBtn = document.querySelector('.prev-slide');
@@ -1401,4 +1427,5 @@
     </script>
 </body>
 </html>
+
 
