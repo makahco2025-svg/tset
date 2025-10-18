@@ -61,7 +61,7 @@
 
         .marquee-content {
             display: inline-block;
-            animation: marquee-ltr 20s linear infinite;
+            animation: marquee-ltr 40s linear infinite;
             padding-right: 100%; /* Start off-screen */
         }
 
@@ -151,113 +151,104 @@
             margin: 8px auto 0;
         }
 
-        /* Carousel Styles for Offers */
-        .carousel-container {
+        /* Professional Slider Styles */
+        .slider-container {
             position: relative;
             width: 100%;
             margin: 30px auto;
-            padding: 0 50px;
-            box-sizing: border-box;
-        }
-        .carousel-wrapper {
             overflow: hidden;
-            width: 100%;
-            border-radius: 10px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
-        .carousel-track {
+        .slider-wrapper {
             display: flex;
-            transition: transform 0.5s ease-in-out;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
-        .carousel-card {
-            flex-shrink: 0;
-            width: 25%;
-            padding: 10px;
-            box-sizing: border-box;
+        .slide {
+            min-width: 100%;
             position: relative;
         }
-        .carousel-card-inner {
-            background-color: var(--card-background);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            transition: transform .2s ease, box-shadow .2s ease;
-        }
-        .carousel-card-inner:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-        .carousel-card img {
+        .slide img {
             width: 100%;
-            height: 180px;
+            height: 400px;
             object-fit: cover;
         }
-        .carousel-info {
-            padding: 15px;
+        .slide-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 30px;
             text-align: center;
         }
-        .carousel-info h3 {
-            font-size: 1.1em;
-            margin: 0 0 10px 0;
-            color: var(--text-color);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+        .slide-content h3 {
+            font-size: 2em;
+            margin-bottom: 10px;
         }
-        .price-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-        }
-        .new-price {
+        .slide-content p {
             font-size: 1.2em;
-            font-weight: bold;
-            color: var(--primary-color);
+            margin-bottom: 20px;
         }
-        .old-price {
-            font-size: 1em;
-            color: var(--secondary-color);
+        .slide-content .price {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #ffc107;
+        }
+        .slide-content .old-price {
             text-decoration: line-through;
+            opacity: 0.7;
+            margin-right: 10px;
         }
-        .offer-badge {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background-color: #dc3545;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-weight: bold;
-            font-size: 0.9em;
-            z-index: 10;
-        }
-        .carousel-btn {
+        .slider-nav {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background-color: rgba(255, 255, 255, 0.9);
-            border: 1px solid #ddd;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        .slider-nav button {
+            background-color: rgba(255, 255, 255, 0.7);
+            border: none;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            width: 45px;
-            height: 45px;
-            font-size: 24px;
+            font-size: 20px;
             cursor: pointer;
-            z-index: 20;
+            transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: background-color 0.3s, color 0.3s;
         }
-        .carousel-btn:hover {
+        .slider-nav button:hover {
             background-color: var(--primary-color);
             color: white;
         }
-        .carousel-btn.prev {
-            right: 0;
-        }
-        .carousel-btn.next {
+        .slider-dots {
+            position: absolute;
+            bottom: 20px;
             left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .slider-dots button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .slider-dots button.active {
+            background-color: white;
+            transform: scale(1.2);
         }
         
         /* Search and Filter Container */
@@ -674,6 +665,9 @@
             .location-details { text-align: center; margin-bottom: 20px; }
             .controls-container { top: 40px; } /* Adjust sticky top */
             .modal-content { width: 90%; }
+            .slide img { height: 300px; }
+            .slide-content h3 { font-size: 1.5em; }
+            .slide-content p { font-size: 1em; }
         }
         @media (max-width: 576px) {
             .carousel-card { width: 100%; }
@@ -685,6 +679,10 @@
             body { padding-top: 36px; }
             .controls-container { top: 35px; }
             .cart-fab { bottom: 20px; left: 20px; width: 55px; height: 55px; }
+            .slide img { height: 250px; }
+            .slide-content { padding: 20px; }
+            .slide-content h3 { font-size: 1.2em; }
+            .slide-content p { font-size: 0.9em; }
         }
     </style>
 <script type="importmap">
@@ -704,6 +702,16 @@
         <div class="marquee-content">
             <span>عروضنا الكبرى كل يوم جمعة من كل أسبوع</span>
             <span>عروضنا الكبرى كل يوم جمعة من كل أسبوع</span>
+            <span>عروضنا الكبرى كل يوم جمعة من كل أسبوع</span>
+            <span>عروضنا الكبرى كل يوم جمعة من كل أسبوع</span>
+            <span>عروضنا الكبرى كل يوم جمعة من كل أسبوع</span>
+            <span>عروضنا الكبرى كل يوم جمعة من كل أسبوع</span>
+            <span>عروضنا الكبرى كل يوم جمعة من كل أسبوع</span>
+            <span>عروضنا الكبرى كل يوم جمعة من كل أسبوع</span>
+            <span>عروضنا الكبرى كل يوم جمعة من كل أسبوع</span>
+            <span>عروضنا الكبرى كل يوم جمعة من كل أسبوع</span>
+            <span>عروضنا الكبرى كل يوم جمعة من كل أسبوع</span>
+            <span>عروضنا الكبرى كل يوم جمعة من كل أسبوع</span>
         </div>
     </div>
     <div class="container">
@@ -718,14 +726,17 @@
         <div class="secondary-announcement-bar">أفضل العروض المتاحة</div>
 
         <h2 class="section-title">أكثر العروض توفيراً</h2>
-        <section class="carousel-container">
-            <button class="carousel-btn prev" aria-label="العرض السابق"><i class="fas fa-chevron-right"></i></button>
-            <div class="carousel-wrapper">
-                <div class="carousel-track">
-                    <!-- Offer products will be injected here by JS -->
-                </div>
+        <section class="slider-container">
+            <div class="slider-wrapper">
+                <!-- Slider slides will be injected here by JS -->
             </div>
-            <button class="carousel-btn next" aria-label="العرض التالي"><i class="fas fa-chevron-left"></i></button>
+            <div class="slider-nav">
+                <button class="prev-slide"><i class="fas fa-chevron-right"></i></button>
+                <button class="next-slide"><i class="fas fa-chevron-left"></i></button>
+            </div>
+            <div class="slider-dots">
+                <!-- Dots will be injected here by JS -->
+            </div>
         </section>
         
         <main>
@@ -851,87 +862,111 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Carousel Logic
-            const offerProducts = [
-                {name: "طبق بيض ابيض", oldPrice: "170.00 جنيه", newPrice: "159.00 جنيه", discount: "-25%", image: "https://cdn.metro-cc.ru/ru/ru_pim_195676001001_01.png"},
-                {name: "كيلو سمن سايب", oldPrice: "120.00 جنيه", newPrice: "100.00 جنيه", discount: "-20%", image: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/201911/ghee.png"},
-                {name: "كيلو أرز وسط", oldPrice: "28.00 جنيه", newPrice: "22.00 جنيه", discount: "-20%", image: "https://www.albayan.ae/assets/archives/images/2023/08/25/4715792.jpg"},
-                {name: "2 زيت سندباد", oldPrice: "130.00 جنيه", newPrice: "105.00 جنيه", discount: "-25%", image: "https://lana.gov.ly/images/src/215410.jpg"},
-                {name: "2 كيلو دقيق سايب", oldPrice: "40.00 جنيه", newPrice: "35.00 جنيه", discount: "-25%", image: "https://cdn.nur.kz/images/1200x675/7d9be34e89d9523d.jpeg"},
-                {name: "تونة معلبة", oldPrice: "8.00 جنيه", newPrice: "6.00 جنيه", discount: "-25%", image: "https://images.unsplash.com/photo-1598214662951-bcb83f085758?w=500&q=60"},
-                {name: "معجون طماطم", oldPrice: "4.00 جنيه", newPrice: "3.00 جنيه", discount: "-25%", image: "https://images.unsplash.com/photo-1608664838634-73d82f7c2a79?w=500&q=60"},
-                {name: "جبنة كريمية", oldPrice: "18.00 جنيه", newPrice: "13.50 جنيه", discount: "-25%", image: "https://images.unsplash.com/photo-1628088200424-44b4077fab41?w=500&q=60"}
+            // Professional Slider Logic
+            const sliderProducts = [
+                {name: "طبق بيض ابيض", oldPrice: "170.00 جنيه", newPrice: "159.00 جنيه", discount: "-25%", image: "https://cdn.metro-cc.ru/ru/ru_pim_195676001001_01.png", description: "جودة عالية وأسعار منافسة"},
+                {name: "كيلو سمن سايب", oldPrice: "120.00 جنيه", newPrice: "100.00 جنيه", discount: "-20%", image: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/201911/ghee.png", description: "سمن طبيعي 100%"},
+                {name: "كيلو أرز وسط", oldPrice: "28.00 جنيه", newPrice: "22.00 جنيه", discount: "-20%", image: "https://www.albayan.ae/assets/archives/images/2023/08/25/4715792.jpg", description: "أفضل أنواع الأرز"},
+                {name: "2 زيت سندباد", oldPrice: "130.00 جنيه", newPrice: "105.00 جنيه", discount: "-25%", image: "https://lana.gov.ly/images/src/215410.jpg", description: "زيت نباتي صحي"},
+                {name: "2 كيلو دقيق سايب", oldPrice: "40.00 جنيه", newPrice: "35.00 جنيه", discount: "-25%", image: "https://cdn.nur.kz/images/1200x675/7d9be34e89d9523d.jpeg", description: "دقيق عالي الجودة"},
+                {name: "كيلو جبنة ثلاجة", oldPrice: "140.00 جنيه", newPrice: "120.00 جنيه", discount: "-15%", image: "https://i.pinimg.com/736x/73/6f/8f/736f8fb118ca449d576f26b3a319da79.jpg", description: "جبنة طازجة من أفضل المزارع"},
+                {name: "كيلو جبنة براملى", oldPrice: "180.00 جنيه", newPrice: "160.00 جنيه", discount: "-12%", image: "https://avatars.dzeninfra.ru/get-zen_doc/3901320/pub_6209e776279dc141916f0754_6209eb7cf978a974ec4a23c2/scale_1200", description: "جبنة براملى ممتازة"},
+                {name: "شكارة ارز 25 كجم", oldPrice: "620.00 جنيه", newPrice: "570.00 جنيه", discount: "-8%", image: "https://mir-s3-cdn-cf.behance.net/project_modules/hd/24432229385577.55f071518fbd7.jpg", description: "توفير كبير عند الشراء بالجملة"},
+                {name: "برجر المراعى عائلى", oldPrice: "125.00 جنيه", newPrice: "115.00 جنيه", discount: "-8%", image: "https://www2.0zz0.com/2025/09/26/01/478227720.jpg", description: "لحم بقري عالي الجودة"},
+                {name: "كيلو رنجة درجة أولى", oldPrice: "140.00 جنيه", newPrice: "115.00 جنيه", discount: "-18%", image: "https://ychef.files.bbci.co.uk/976x549/p04xs9bl.jpg0", description: "رنجة طازجة من أفضل الأنواع"},
+                {name: "زجاجة زيت حلوة 5 لتر", oldPrice: "330.00 جنيه", newPrice: "315.00 جنيه", discount: "-5%", image: "https://ashiae-bucket.s3.eu-west-3.amazonaws.com/products/6521-ex-0.jpg", description: "زيت نباتي خالص"},
+                {name: "كيلو عسل اسمر", oldPrice: "45.00 جنيه", newPrice: "38.00 جنيه", discount: "-16%", image: "https://img.diytrade.com/smimg/2935125/49070690-11280215-0/Molasses_sugar_cane/8445.jpg", description: "عسل طبيعي خالص"}
             ];
 
-            const carouselTrack = document.querySelector('.carousel-track');
-            const prevBtn = document.querySelector('.carousel-btn.prev');
-            const nextBtn = document.querySelector('.carousel-btn.next');
+            const sliderWrapper = document.querySelector('.slider-wrapper');
+            const sliderDots = document.querySelector('.slider-dots');
+            const prevSlideBtn = document.querySelector('.prev-slide');
+            const nextSlideBtn = document.querySelector('.next-slide');
+            let currentSlide = 0;
+            let slideInterval;
 
-            if (carouselTrack && prevBtn && nextBtn) {
-                function populateCarousel() {
-                    carouselTrack.innerHTML = '';
-                    offerProducts.forEach(product => {
-                        const card = document.createElement('div');
-                        card.className = 'carousel-card';
-                        card.innerHTML = `
-                            <div class="carousel-card-inner">
-                                <div class="offer-badge">${product.discount}</div>
-                                <img src="${product.image}" alt="${product.name}" loading="lazy">
-                                <div class="carousel-info">
-                                    <h3>${product.name}</h3>
-                                    <div class="price-container">
-                                        <p class="new-price">${product.newPrice}</p>
-                                        <p class="old-price">${product.oldPrice}</p>
-                                    </div>
+            if (sliderWrapper && sliderDots && prevSlideBtn && nextSlideBtn) {
+                function populateSlider() {
+                    sliderWrapper.innerHTML = '';
+                    sliderDots.innerHTML = '';
+                    
+                    sliderProducts.forEach((product, index) => {
+                        // Create slide
+                        const slide = document.createElement('div');
+                        slide.className = 'slide';
+                        slide.innerHTML = `
+                            <img src="${product.image}" alt="${product.name}" loading="lazy">
+                            <div class="slide-content">
+                                <h3>${product.name}</h3>
+                                <p>${product.description}</p>
+                                <div class="price">
+                                    <span class="old-price">${product.oldPrice}</span>
+                                    <span>${product.newPrice}</span>
                                 </div>
                             </div>
                         `;
-                        carouselTrack.appendChild(card);
+                        sliderWrapper.appendChild(slide);
+                        
+                        // Create dot
+                        const dot = document.createElement('button');
+                        dot.className = index === 0 ? 'active' : '';
+                        dot.addEventListener('click', () => {
+                            goToSlide(index);
+                            resetSlideInterval();
+                        });
+                        sliderDots.appendChild(dot);
                     });
                 }
 
-                let carouselIndex = 0;
-
-                function getItemsVisible() {
-                    const cardWidth = carouselTrack.querySelector('.carousel-card')?.offsetWidth;
-                    if (!cardWidth) return 1;
-                    return Math.floor(carouselTrack.parentElement.offsetWidth / cardWidth);
+                function updateSlider() {
+                    sliderWrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
+                    
+                    // Update dots
+                    const dots = sliderDots.querySelectorAll('button');
+                    dots.forEach((dot, index) => {
+                        dot.classList.toggle('active', index === currentSlide);
+                    });
                 }
 
-                function moveCarousel(isAnimated = true) {
-                    const totalItems = carouselTrack.children.length;
-                    if (totalItems === 0) return;
-                    
-                    const cardWidth = carouselTrack.querySelector('.carousel-card').offsetWidth;
-                    const itemsVisible = getItemsVisible();
-                    
-                    if (carouselIndex >= totalItems - itemsVisible + 1) {
-                        carouselIndex = 0;
-                    }
-                    if (carouselIndex < 0) {
-                        carouselIndex = totalItems - itemsVisible;
-                    }
-
-                    const offset = -carouselIndex * cardWidth;
-                    
-                    carouselTrack.style.transition = isAnimated ? 'transform 0.5s ease-in-out' : 'none';
-                    carouselTrack.style.transform = `translateX(${offset}px)`;
+                function goToSlide(slideIndex) {
+                    currentSlide = slideIndex;
+                    updateSlider();
                 }
 
-                nextBtn.addEventListener('click', () => {
-                    carouselIndex++;
-                    moveCarousel();
+                function nextSlide() {
+                    currentSlide = (currentSlide + 1) % sliderProducts.length;
+                    updateSlider();
+                }
+
+                function prevSlide() {
+                    currentSlide = (currentSlide - 1 + sliderProducts.length) % sliderProducts.length;
+                    updateSlider();
+                }
+
+                function startSlideInterval() {
+                    slideInterval = setInterval(nextSlide, 5000);
+                }
+
+                function resetSlideInterval() {
+                    clearInterval(slideInterval);
+                    startSlideInterval();
+                }
+
+                // Event listeners
+                nextSlideBtn.addEventListener('click', () => {
+                    nextSlide();
+                    resetSlideInterval();
                 });
 
-                prevBtn.addEventListener('click', () => {
-                     carouselIndex--;
-                     moveCarousel();
+                prevSlideBtn.addEventListener('click', () => {
+                    prevSlide();
+                    resetSlideInterval();
                 });
 
-                window.addEventListener('resize', () => moveCarousel(false));
-
-                populateCarousel();
-                setTimeout(() => moveCarousel(false), 100);
+                // Initialize slider
+                populateSlider();
+                updateSlider();
+                startSlideInterval();
             }
 
             // Product List, Filter & Search Logic
@@ -1248,6 +1283,11 @@
                     const whatsappUrl = `https://wa.me/${wa.number}?text=${encodedMessage}`;
                     window.open(whatsappUrl, '_blank');
                 });
+
+                // Clear cart after successful order
+                cart = [];
+                saveCart();
+                updateCartView();
 
                 closeModal(checkoutModal);
                 openModal(orderSuccessModal);
