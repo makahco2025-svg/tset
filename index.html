@@ -754,7 +754,7 @@
               </div>
                 <div class="location-map">
                     <div class="map-container">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3457.292968442386!2d31.003345077255545!3d29.94225063480985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145851003dcc9bef%3A0xc9ea5239f1d807db!2z2KfYs9mI2KfZgiDYqtio2KfYsdmD!5e0!3m2!1sar!2seg!4v1760059879807!5m2!1sar!2seg" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!m12!1m3!1d3457.292968442386!2d31.003345077255545!3d29.94225063480985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145851003dcc9bef%3A0xc9ea5239f1d807db!2z2KfYs9mI2KfZgiDYqtio2KfYsdmD!5e0!3m2!1sar!2seg!4v1760059879807!5m2!1sar!2seg" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
                         width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" title="موقع أسواق تبارك فرع 6 أكتوبر"></iframe>
                     </div>
                 </div>
@@ -841,10 +841,8 @@
         <div class="modal-content">
              <span class="close-modal dark" id="close-success-modal">&times;</span>
              <h2>تم تجهيز طلبك!</h2>
-             <p>لإتمام الطلب، الرجاء إرسال رسالة الواتساب إلى <strong>كل الأرقام التالية</strong>:</p>
-             <div class="whatsapp-links" id="whatsapp-links">
-                 <!-- WhatsApp links will be injected here -->
-             </div>
+             <p>لقد تم فتح نوافذ جديدة لإرسال طلبك عبر الواتساب. إذا لم تظهر، يرجى التأكد من تعطيل مانع النوافذ المنبثقة.</p>
+             <p style="margin-top:20px;"><i class="fab fa-whatsapp" style="color: #25D366; font-size: 3em;"></i></p>
         </div>
     </div>
 
@@ -1228,16 +1226,15 @@
                 message += `الموقع: ${mapLink}`;
 
                 const encodedMessage = encodeURIComponent(message);
-                const phoneNumbers = ['201030566078', '201118091234', '201030566077'];
+                const whatsappNumbers = [
+                    '201030566078',
+                    '201118091234',
+                    '201095348285'
+                ];
                 
-                const whatsappLinksContainer = document.getElementById('whatsapp-links');
-                whatsappLinksContainer.innerHTML = ''; // Clear previous links
-                phoneNumbers.forEach((phone, index) => {
-                    const link = document.createElement('a');
-                    link.href = `https://wa.me/${phone}?text=${encodedMessage}`;
-                    link.target = '_blank';
-                    link.innerHTML = `إرسال الطلب للفرع ${index + 1} <i class="fab fa-whatsapp"></i>`;
-                    whatsappLinksContainer.appendChild(link);
+                // Send the order to all WhatsApp numbers
+                whatsappNumbers.forEach(number => {
+                    window.open(`https://wa.me/${number}?text=${encodedMessage}`, '_blank');
                 });
 
                 closeModal(checkoutModal);
